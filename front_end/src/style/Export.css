@@ -1,0 +1,160 @@
+.export-container {
+    padding: 20px 32px;
+    /* border: 1px solid black; */
+}
+
+.export-container .export-h1 {
+    background: rgb(63, 94, 251);
+    background: radial-gradient(circle, rgb(28, 65, 255) 0%, rgba(62, 97, 217, 1) 72%, rgb(37, 163, 136) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.export-container h2 {
+    font-size: 3vw;
+    font-weight: normal;
+}
+
+.export-content-container {
+    /* height: 500px; */
+    width: 100%;
+    height: max-content;
+    /* border: 1px solid black; */
+    display: flex;
+}
+
+.content-container {
+    /* height: 500px; */
+    width: 50%;
+    /* border: 1px solid black; */
+}
+
+.export-content {
+    height: 200px;
+    width: 100%;
+    /* border: 1px solid black; */
+    margin-top: 10px;
+}
+
+.export-content p {
+    font-size: 1.4vw;
+    color: #838181;
+}
+
+.animated-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 16px 36px;
+    border: 4px solid;
+    border-color: transparent;
+    font-size: 16px;
+    background-color: inherit;
+    border-radius: 100px;
+    font-weight: 600;
+    color: #735AE5;
+    box-shadow: 0 0 0 2px #735AE5;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button svg {
+    position: absolute;
+    width: 24px;
+    fill: #735AE5;
+    z-index: 9;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .arr-1 {
+    right: 16px;
+}
+
+.animated-button .arr-2 {
+    left: -25%;
+}
+
+.animated-button .circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: #735AE5;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .text {
+    position: relative;
+    z-index: 1;
+    transform: translateX(-12px);
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button:hover {
+    box-shadow: 0 0 0 12px transparent;
+    color: white;
+    border-radius: 12px;
+}
+
+.animated-button:hover .arr-1 {
+    right: -25%;
+}
+
+.animated-button:hover .arr-2 {
+    left: 16px;
+}
+
+.animated-button:hover .text {
+    transform: translateX(12px);
+}
+
+.animated-button:hover svg {
+    fill: white;
+}
+
+.animated-button:active {
+    scale: 0.95;
+    box-shadow: 0 0 0 4px greenyellow;
+}
+
+.animated-button:hover .circle {
+    width: 220px;
+    height: 220px;
+    opacity: 1;
+}
+
+.ex-back {
+    height: 2.5px;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(0, 212, 255, 1) 100%);
+    margin-top: 10px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.export-img {
+    height: 100%;
+    width: 50%;
+    /* border: 1px solid black; */
+    height: 602px;
+    background: rgb(151, 163, 223);
+background: linear-gradient(90deg, rgb(160, 169, 216) 0%, rgba(224, 227, 238, 0.799) 31%, rgb(194, 250, 239) 100%);
+    padding: 0 15px;
+    border-radius: 15px;
+    margin-top: 25px;
+    margin-left: 9px;
+}
+
+.export-img img {
+    height: 100%;
+    width: 100%;
+    /* border: 1px solid black; */
+}
