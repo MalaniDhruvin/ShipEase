@@ -1,0 +1,25 @@
+# Node.js
+node_modules
+.env
+.env.test
+.env.production
+
+# Logs
+logs/
+*.log
+
+# IDE files
+.idea/
+.vscode/
+
+# Testing
+coverage/
+test.env
+
+# Build
+build/
+
+# Miscellaneous
+.DS_Store
+*.tmp
+*.swp
