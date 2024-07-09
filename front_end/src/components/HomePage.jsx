@@ -17,6 +17,7 @@ const HomePage = () => {
             <div className="Home-img">
                 <img src="https://d2kh7o38xye1vj.cloudfront.net/wp-content/uploads/2023/07/home-A-trusted-growth-partner-rv.webp" width={600} height={400} alt="" />
             </div>  
+            <p>hola</p>
         </div>
         <Marquee></Marquee>
         <Detail></Detail>
