@@ -1,9 +1,10 @@
 require("dotenv").config();
-const express = require('express')
+const express = require('express');
 const cors = require("cors");
 require("./utils/dbConnect.js");
+const cookieParser = require("cookie-parser");
 
-const app = express()
+const app = express();
 const PORT = process.env.PORT || 3000;
 
 // CORS middleware
@@ -22,8 +23,9 @@ app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Credentials", true);
     next();
 });
-app.use(express.json())
-app.use("/api", require("./routes/index.js"))
+app.use(express.json());
+app.use(cookieParser());
+app.use("/api", require("./routes/index.js"));
 
 app.listen(PORT, () => {
     console.log(`listening on port ${PORT}`);

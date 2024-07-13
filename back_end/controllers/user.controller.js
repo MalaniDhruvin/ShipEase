@@ -6,17 +6,11 @@ const asyncHandler = require("../utils/asyncHandler.js");
 
 const generateAccessTokenAndRefreshToken = async (userId) => {
     try {
-        // console.log(1)
         const user = await User.findById(userId);
-        // console.log(2)
         const accessToken = await user.generateAccessToken();
-        // console.log(3)
         const refreshToken = await user.generateRefreshToken();
-        // console.log(4)
         user.refreshToken = refreshToken;
-        // console.log(5)
         await user.save({validateBeforeSave: false});
-        // console.log(6)
         return {accessToken, refreshToken};
     } catch (error) {
         throw new ApiError(501, "something went wrong while generating the access token and refresh token")
@@ -62,18 +56,6 @@ exports.userLogin = asyncHandler(async(req, res) => {
         .json(
             new ApiResponse(200, isUser, "Success")
         )
-        // if (isUser) {
-        //     // return res.status(200).json({
-        //     //     status: "Success",
-        //     //     message: "You are successfully login..!",
-        //     //     userData: isUser,
-        //     // });
-            // return res.status(200).json(
-            //     new ApiResponse(200, isUser, "Success")
-            // )
-        // } else {
-        //     throw new ApiError(404, "Invalid username OR password")
-        // }
     } catch (error) {
         throw new ApiError(404, error.message);
     }

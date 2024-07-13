@@ -25,7 +25,8 @@ const shipmentSchema = mongoose.Schema({
     status: { 
         type: String, 
         enum: ['pending', 'in_transit', 'delivered', 'cancelled'], 
-        default: 'pending'},
+        default: 'pending'
+    },
     pickup_date: { 
         type: Date
     },
