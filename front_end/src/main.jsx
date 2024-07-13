@@ -9,13 +9,17 @@ import Login from './components/Login.jsx';
 import Marquee from './components/Marquee.jsx'
 import Detail from './components/Detail.jsx'
 import Pricing from './components/Pricing.jsx'
+import OrderTracking from './components/OrderTracking.jsx'
+import Register from './components/Register.jsx'
 
 const Router = createBrowserRouter([{
   path: '/', element: <App />, children: [
     { path: '/login', element: <Login></Login> },
     { path: '/ship', element: <Ship></Ship> },
     { path: '/', element: <HomePage /> },
-    { path: '/pricing', element: <Pricing></Pricing> }
+    { path: '/pricing', element: <Pricing></Pricing> },
+    {path:'/trackOrder',element:<OrderTracking />},
+    {path:'/register',element:<Register />},
   ]
 },])
 

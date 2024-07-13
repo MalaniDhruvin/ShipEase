@@ -2,9 +2,50 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 80vh;
 }
 
 .form{
     width: 300px;
+}
+
+
+.login1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 80vh; */
+}
+
+.reg-form{
+    width: 600px;
+    /* border: 1px solid black; */
+    display: flex;
+    /* gap: 3px; */
+    flex-wrap: wrap;
+    margin-left: -150px;
+    padding: 20px;
+}
+
+.reg-form div{
+    width: 48%;
+    /* margin-left: 10px; */
+    margin: 5px;
+}
+
+.reg-form .add{
+    width: 100%;
+}
+
+.display{
+    display: flex;
+    gap: 2px;
+}
+
+.reg-form .reg-btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
 }
