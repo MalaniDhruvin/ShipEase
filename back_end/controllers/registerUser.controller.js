@@ -9,12 +9,12 @@ exports.registerUser = asyncHandler(async (req, res) => {
         console.log(req.body);
         const {fullname, email, password, phone, address} = req.body;   
         if (
-            [fullname, email, password, phone].some((field) => field === null || field?.trim() === "")
+            [fullname, email, password, phone].some((field) => field === undefined)
         ){
             throw new ApiError(400, "Some Fields are Missing")
         }
         if (
-            Object.values(address).some((field) => field === null || field?.trim() === "")
+            Object.values(address).some((field) => field === undefined)
         ){
             throw new ApiError(400, "Some Address Fields are Missing")
         }

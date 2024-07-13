@@ -15,7 +15,7 @@ exports.verifyUser = asyncHandler(async(req, res, next) => {
             throw new ApiError(404, "Invalid Access Token");
         }
         req.user = user;
-        next()
+        next();
     } catch (error) {
         if (error instanceof ApiError) {
             return next(error);
