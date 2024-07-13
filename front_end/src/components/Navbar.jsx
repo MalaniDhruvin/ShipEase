@@ -26,7 +26,7 @@ export const Navbar = () => {
                     >
                         <Link to="/about" className="nav-link px-2 link-secondary">About Us</Link></li>
 
-                    <li><Link to="/track" className="nav-link px-2 link-secondary">Track Order</Link></li>
+                    <li><Link to="/trackOrder" className="nav-link px-2 link-secondary">Track Order</Link></li>
                 </ul>
 
                 <div className="col-md-3 text-end">
