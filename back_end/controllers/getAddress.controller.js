@@ -11,7 +11,7 @@ exports.getAddress = asyncHandler(async (req, res) => {
         }
         const address = user.address;
         return res.status(200).json(
-            new ApiResponse(200, address, "Address Retrived Successfully")
+            new ApiResponse(200, address, "Address Retrieved Successfully")
         )
     } catch (error) {
         if (error instanceof ApiError) {
