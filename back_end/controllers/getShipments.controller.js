@@ -19,17 +19,13 @@ exports.getShipments = asyncHandler(async(req, res) => {
             }      
             shipments.push(shipment);
         }
-        const options = {
-            httpOnly: true,
-            secure: true,
-        }
+
         return res
         .status(200)
-        .clearCookie("accessToken", options)
-        .clearCookie("refreshToken", options)
         .json(
             new ApiResponse(200, shipments, "Shipments Retrieved")
         )
+        
     } catch (error) {
         if (error instanceof ApiError) {
             return next(error);
