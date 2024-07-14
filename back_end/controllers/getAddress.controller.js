@@ -10,7 +10,15 @@ exports.getAddress = asyncHandler(async (req, res) => {
             throw new ApiError(404, "User Not Found")
         }
         const address = user.address;
-        return res.status(200).json(
+        const options = {
+            httpOnly: true,
+            secure: true,
+        }
+        return res
+        .status(200)
+        .clearCookie("accessToken", options)
+        .clearCookie("refreshToken", options)
+        .json(
             new ApiResponse(200, address, "Address Retrieved Successfully")
         )
     } catch (error) {

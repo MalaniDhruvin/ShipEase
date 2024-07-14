@@ -54,7 +54,16 @@ exports.bookShipment = asyncHandler(async (req, res) => {
 
     await user.shipments.push(shipment._id);
     await user.save({ validateBeforeSave: false });
-    return res.status(201).json(
+
+    const options = {
+        httpOnly: true,
+        secure: true,
+    }
+    return res
+    .status(201)
+    .clearCookie("accessToken", options)
+    .clearCookie("refreshToken", options)
+    .json(
         new ApiResponse(201, shipment, "Shipment Registerd Successfully")
     )
 })
