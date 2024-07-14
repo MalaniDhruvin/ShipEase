@@ -13,8 +13,9 @@
 } */
 
 .container-1{
-    border-bottom: 2px solid black;
+    border-bottom: 1px solid black;
     background: transparent;
+    padding: 0px 35px;
 }
 
 .navbar {
@@ -38,6 +39,13 @@
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid black; */
 }
 
 .dropdown-content {
