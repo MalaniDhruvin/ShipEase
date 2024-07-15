@@ -18,7 +18,7 @@
 }
 
 .export-content-container {
-    /* height: 500px; */
+    /* height: 100px; */
     width: 100%;
     height: max-content;
     /* border: 1px solid black; */
@@ -29,18 +29,23 @@
     /* height: 500px; */
     width: 50%;
     /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .export-content {
-    height: 200px;
+    height: 160px;
     width: 100%;
     /* border: 1px solid black; */
-    margin-top: 10px;
+    margin-top: 30px;
 }
 
 .export-content p {
     font-size: 1.4vw;
     color: #838181;
+    margin: 10px 0;
 }
 
 .animated-button {
@@ -141,7 +146,7 @@
 }
 
 .export-img {
-    height: 100%;
+    height: 90%;
     width: 50%;
     /* border: 1px solid black; */
     height: 602px;
@@ -149,7 +154,7 @@
 background: linear-gradient(90deg, rgb(160, 169, 216) 0%, rgba(224, 227, 238, 0.799) 31%, rgb(194, 250, 239) 100%);
     padding: 0 15px;
     border-radius: 15px;
-    margin-top: 25px;
+    /* margin-top: 25px; */
     margin-left: 9px;
 }
 

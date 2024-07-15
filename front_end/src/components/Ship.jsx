@@ -1,6 +1,8 @@
 import { useState,useRef } from 'react';
 import Dropdown from './Dropdown'
 import '../style/Ship.css'
+import Navbar from './Navbar';
+import Footer from './Footer';
 
 const Ship = () => {
   const [visible, setVisible] = useState(false);
@@ -19,7 +21,8 @@ const Ship = () => {
     // console.log(weight)
     console.log({ ...weight, [i.target.name]: i.target.value });
   }
-  return (
+  return (<>
+  <Navbar></Navbar>
     <div className="ship-container">
       <div className="ship-title">
         <h1>
@@ -50,7 +53,7 @@ const Ship = () => {
         </div>
       </div>
       <div className="ship-form-container">
-        <p style={{ 'marginTop': '20px' }}>from</p>
+        <p style={{ 'marginTop': '20px',fontWeight:500 }}>From</p>
         <div className="form-content-container">
           <div className="form-content" >
             <Dropdown></Dropdown>
@@ -72,7 +75,7 @@ const Ship = () => {
         </div>
 
         {/* //second part */}
-        <p style={{ 'marginTop': '45px' }}>To</p>
+        <p style={{ 'marginTop': '45px',fontWeight:500 }}>To</p>
         <div className="form-content-container">
           <div className="form-content" >
             <Dropdown></Dropdown>
@@ -142,7 +145,8 @@ const Ship = () => {
       </div>)}
 
     </div>
-
+    <Footer></Footer>
+    </>
   );
 };
 

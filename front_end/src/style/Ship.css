@@ -13,7 +13,7 @@
     /* width: 300px; */
     /* border: 1px solid black; */
     padding: 30px;
-    color: rgba(2, 0, 36, 0.849);
+    color: #0B0757;
 }
 
 .ship-des {
@@ -22,7 +22,8 @@
     font-size: 1.3vw;
     margin-top: 10px;
     /* border: 1px solid black; */
-    color: rgb(2, 0, 36);
+    /* color: rgb(2, 0, 36); */
+    color: #636478;
 }
 
 .ship-step-container {
@@ -47,26 +48,30 @@
 
 .ship-step h1 {
     font-size: 2.5vw;
+    color: #0B0757;
 }
 
 .ship-step h2 {
     font-size: 1.2vw;
     text-align: center;
+    color: #0B0757;
+    font-weight: 600;
 }
 
 .ship-form-container {
     width: 920px;
     height: 400px;
     margin-top: 10px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     padding: 25px;
     border-radius: 15px;
+    box-shadow:  0px 5px 25px 5px rgba(65, 63, 63, 0.116);;
 }
 
 .ship-drop-container {
     width: 400px;
     height: 100%;
-    border: 1px solid black;
+    border: 1px solid #6364789a;
     border-radius: 10px;
     padding: 10px;
 }
@@ -85,17 +90,21 @@
     width: 400px;
     max-height: 250px;
     height: fit-content;
-    border: 1px solid black;
+    border: 1px solid #6364789a;
     overflow: scroll;
     position: absolute;
     top: 38px;
     border-top: none;
     left: 0;
-    background-color: azure;
+    background-color: white;
     /* border-radius: 10px; */
     padding: 10px;
     z-index: 10;
 
+}
+
+.div-api:hover{
+    background-color: #8c8e9b48;
 }
 
 .form-content-container {
@@ -110,7 +119,7 @@
 .form-city {
     width: 200px;
     height: 100%;
-    border: 1px solid black;
+    border: 1px solid #6364789a;
     display: flex;
     flex-direction: column;
     /* gap: 0; */
@@ -145,12 +154,12 @@
 .button-name {
     align-items: center;
     appearance: none;
-    background-color: #adadd8;
+    background-color: #0B0757;
     border-radius: 4px;
     border-width: 0;
     box-shadow: rgba(45, 35, 66, 0.2) 0 2px 4px, rgba(45, 35, 66, 0.15) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
     box-sizing: border-box;
-    color: #36395A;
+    color: #dfdfdf;
     cursor: pointer;
     display: inline-flex;
     font-family: "JetBrains Mono", monospace;

@@ -12,7 +12,7 @@ export const Navbar = () => {
                 <div className="col-md-3 mb-2 mb-md-0 ">
                     <Link to="/" className="d-inline-flex link-body-emphasis text-decoration-none logo">
                         <img src="log.png" width={35} alt="" />
-                        <h1 style={{fontWeight:400,fontSize:'2vw'}}>ShipEase</h1>
+                        <h1 style={{ fontWeight: 400, fontSize: '2vw' }}>ShipEase</h1>
                     </Link>
                 </div>
 
@@ -23,11 +23,10 @@ export const Navbar = () => {
                         <Link to="/" className="nav-link px-2 link-secondary">Home</Link>
                     </li>
                     <li><Link to="/pricing" className="nav-link px-2 link-secondary">Pricing</Link></li>
+                    <li><Link to="/trackOrder" className="nav-link px-2 link-secondary">Track Order</Link></li>
                     <li className="nav-item"
                     >
-                        <Link to="/about" className="nav-link px-2 link-secondary">About Us</Link></li>
-
-                    <li><Link to="/trackOrder" className="nav-link px-2 link-secondary">Track Order</Link></li>
+                        <Link to="/contactUs" className="nav-link px-2 link-secondary">Contact Us</Link></li>
                 </ul>
 
                 <div className="col-md-3 text-end">

@@ -37,7 +37,7 @@ const Dropdown = () => {
             <input type="text" placeholder='Please start typing to select ' required onClick={handleInput} ref={input} onChange={(e) => setSearchTerm(e.target.value.toLowerCase())} />
             {vis && (<div className="ship-drop">
                 {val.map((country, index) => (
-                    <div key={index} onClick={() => handlecon(country)} style={{'display':'flex','alignItems':'center','gap':'5px','fontSize':'1.05vw'}}>
+                    <div className='div-api' key={index} onClick={() => handlecon(country)} style={{'display':'flex','alignItems':'center','gap':'5px','fontSize':'1.05vw',padding:'8px 2px'}}>
                         <img src={country.flags.png} alt={country.flags.alt} style={{'width':'20px'}} />
                         {country.name.common}
                     </div>
