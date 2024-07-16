@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { loginUser } from '../Global/apiCall'
 import '../style/Login.css'
+import { AuthContext } from '../store/AuthContext';
 
 const Login = () => {
+    const { login } = useContext(AuthContext);
     const [user, setUser] = useState({ email: "", password: "" });
     const getInfo = (i) => {
         const { name, value, type, checked } = i.target;
@@ -16,6 +18,7 @@ const Login = () => {
         loginUser(user)
             .then((response) => {
                 console.log(response.data);
+                login()
                 window.location.href = "/";
             })
             .catch((error) => {

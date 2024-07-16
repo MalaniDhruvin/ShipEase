@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import '../style/Navbar.css';
 import ProductHover from './ProductHover';
 import PlateformHover from './PlateformHover';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../store/AuthContext';
+
 
 export const Navbar = () => {
-
+    const { isLoggedIn, } = useContext(AuthContext);
     return (
         <div className=" container-1">
             <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
@@ -28,11 +30,16 @@ export const Navbar = () => {
                     >
                         <Link to="/contactUs" className="nav-link px-2 link-secondary">Contact Us</Link></li>
                 </ul>
-
                 <div className="col-md-3 text-end">
-                    <Link to='/login'><button type="button" className="btn btn-outline-primary me-2">Login</button></Link>
-                    <Link to='/register'><button type="button" className="btn btn-primary">Sign-up</button></Link>
+                    {isLoggedIn ? (<p>hello!!</p>
+                    ) : (
+                        <>
+                            <Link to='/login'><button type="button" className="btn btn-outline-primary me-2">Login</button></Link>
+                            <Link to='/register'><button type="button" className="btn btn-primary">Sign-up</button></Link>
+                        </>
+                    )}
                 </div>
+
             </header>
             {/* {isDropdownVisible && (
                 <ProductHover handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} />

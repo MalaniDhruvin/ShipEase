@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { RegisterUser } from '../Global/apiCall';
 import '../style/Register.css'
+import { AuthContext } from '../store/AuthContext';
 
 const Register = () => {
+    const { login } = useContext(AuthContext);
     const [registerUser, setregisterUser] = useState({ fullname: "", phone: "", email: "", address: { streetAddress: "", country: "", state: "", city: "", postalCode: "" } });
     const getInfo = (e) => {
         const { name, value } = e.target;
@@ -30,6 +32,7 @@ const Register = () => {
                 setregisterUser({
                     fullname: "", phone: "", email: "", password: "", address: { streetAddress: "", country: "", state: "", city: "", postalCode: "" }
                 });
+                login()
                 window.location.href = "/";
             })
             .catch((error) => {
