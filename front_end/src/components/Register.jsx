@@ -1,7 +1,42 @@
-import React from 'react'
+import { useState } from 'react'
+import { RegisterUser } from '../Global/apiCall';
 import '../style/Register.css'
 
 const Register = () => {
+    const [registerUser, setregisterUser] = useState({ fullname: "", phone: "", email: "", address: { streetAddress: "", country: "", state: "", city: "", postalCode: "" } });
+    const getInfo = (e) => {
+        const { name, value } = e.target;
+        if (name in registerUser.address) {
+            setregisterUser(prevState => ({
+                ...prevState,
+                address: {
+                    ...prevState.address,
+                    [name]: value
+                }
+            }));
+        } else {
+            setregisterUser(prevState => ({
+                ...prevState,
+                [name]: value
+            }));
+        }
+    };
+    const handleInsertUser = (e) => {
+        e.preventDefault(); // Prevent default form submission
+        RegisterUser(registerUser)
+            .then((response) => {
+                console.log(response.data);
+                alert("User registered successfully!");
+                setregisterUser({
+                    fullname: "", phone: "", email: "", password: "", address: { streetAddress: "", country: "", state: "", city: "", postalCode: "" }
+                });
+                window.location.href = "/";
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+                alert("Failed to register user. Please try again.");
+            });
+    };
     return (
         <div className="d-flex align-items-center py-2 login1" cz-shortcut-listen="true">
             {/* <svg xmlns="http://www.w3.org/2000/svg" className="d-none">
@@ -28,49 +63,49 @@ const Register = () => {
 
                     <h1 className="h3 mb-3 fw-normal" style={{ width: '100%' }}>Sign Up</h1>
                     <div className="form-floating">
-                        <input type="text" className="form-control" id="floatingInput" required placeholder='name' />
+                        <input type="text" className="form-control" name='fullname' id="floatingInput" required placeholder='name' onChange={getInfo} />
                         <label htmlFor="floatingInput">Full Name</label>
                     </div>
                     <div className="form-floating">
-                        <input type="text" maxLength={10} className="form-control" id="floatingInput" placeholder='phone no.' required />
+                        <input type="text" maxLength={10} className="form-control" id="floatingInput" placeholder='phone no.' required name='phone' onChange={getInfo} />
                         <label htmlFor="floatingInput">Phone no.</label>
                     </div>
                     <div className="form-floating">
-                        <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" required />
+                        <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" required name='email' onChange={getInfo} />
                         <label htmlFor="floatingInput">Email address</label>
                     </div>
                     <div className="form-floating">
-                        <input type="password" className="form-control" id="floatingPassword" required placeholder="Password" />
+                        <input type="password" className="form-control" id="floatingPassword" required placeholder="Password" name='password' onChange={getInfo} />
                         <label htmlFor="floatingPassword">Password</label>
                     </div>
                     <div className="form-floating add">
-                        <input type="text" className="form-control" id="floatingPassword" required placeholder="address" />
+                        <input type="text" className="form-control" id="floatingPassword" required placeholder="address" name='streetAddress' onChange={getInfo} />
                         <label htmlFor="floatingPassword">Address</label>
                     </div>
                     <div className="display">
                         <div className='form-floating '>
-                            <input type="text" className="form-control" id="floatingPassword" required placeholder="country" />
+                            <input type="text" className="form-control" id="floatingPassword" required placeholder="country" name='country' onChange={getInfo} />
                             <label htmlFor="floatingPassword">Country</label>
                         </div>
                         <div className='form-floating '>
-                            <input type="text" className="form-control" id="floatingPassword" required placeholder="state" />
+                            <input type="text" className="form-control" id="floatingPassword" required placeholder="state" name='state' onChange={getInfo} />
                             <label htmlFor="floatingPassword">State</label>
                         </div>
                     </div>
                     <div className="display">
                         <div className='form-floating '>
-                            <input type="text" className="form-control" id="floatingPassword" required placeholder="country" />
+                            <input type="text" className="form-control" id="floatingPassword" required placeholder="country" name='city' onChange={getInfo} />
                             <label htmlFor="floatingPassword">City</label>
                         </div>
                         <div className='form-floating '>
-                            <input type="text" className="form-control" id="floatingPassword" required placeholder="state" />
+                            <input type="text" className="form-control" id="floatingPassword" required placeholder="state" name='postalCode' onChange={getInfo} />
                             <label htmlFor="floatingPassword">Postal code</label>
                         </div>
                     </div>
                     <div className='reg-btn'>
-                    <button className="btn btn-primary w-50 py-2 my-2" type="submit">Sign up</button>
+                        <button className="btn btn-primary w-50 py-2 my-2" onClick={handleInsertUser} type="submit">Sign up</button>
                     </div>
-                    
+
                 </form>
             </main>
             <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossOrigin="anonymous"></script>

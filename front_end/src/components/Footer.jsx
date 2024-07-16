@@ -42,22 +42,22 @@ const Footer = () => {
                     <div className="footer-table">
                         <div className="table-content">
                             <h2 style={{ fontSize: '1.5vw' }}>Company</h2>
-                            <Link style={{ textDecoration: 'none' }} to='/'><p style={{ textAlign: 'center', fontWeight: '400', color: '#636363' }}>Home</p></Link>
-                            <Link style={{ textDecoration: 'none' }} to='/contactUs'><p style={{ textAlign: 'center', fontWeight: '400', color: '#636363' }}>Contact Us</p></Link>
-                            <Link style={{ textDecoration: 'none' }} to='/pricing'><p style={{ textAlign: 'center', fontWeight: '400', color: '#636363' }}>Pricing</p></Link>
+                            <Link style={{ textDecoration: 'none' }} to='/'><p style={{ textAlign: 'center', fontWeight: '400', color: '#494949' }}>Home</p></Link>
+                            <Link style={{ textDecoration: 'none' }} to='/contactUs'><p style={{ textAlign: 'center', fontWeight: '400', color: '#494949' }}>Contact Us</p></Link>
+                            <Link style={{ textDecoration: 'none' }} to='/pricing'><p style={{ textAlign: 'center', fontWeight: '400', color: '#494949' }}>Pricing</p></Link>
                         </div>
                         <div className="table-content">
                             <h2 style={{ fontSize: '1.5vw' }}>Resources</h2>
-                            <Link style={{ textDecoration: 'none' }} to='/shipping'><p style={{ textAlign: 'center', fontWeight: '400', color: '#636363' }}>Shipping</p></Link>
-                            <Link style={{ textDecoration: 'none' }} to='/trackOrder'><p style={{ textAlign: 'center', fontWeight: '400', color: '#636363' }}>Track Order</p></Link>
-                            <p style={{ textAlign: 'center', fontWeight: '400', color: '#636363' }}>Coupons</p>
+                            <Link style={{ textDecoration: 'none' }} to='/shipping'><p style={{ textAlign: 'center', fontWeight: '400', color: '#494949' }}>Shipping</p></Link>
+                            <Link style={{ textDecoration: 'none' }} to='/trackOrder'><p style={{ textAlign: 'center', fontWeight: '400', color: '#494949' }}>Track Order</p></Link>
+                            <p style={{ textAlign: 'center', fontWeight: '400', color: '#494949' }}>Coupons</p>
                         </div>
                         <div className="table-content">
                             <h2 style={{ fontSize: '1.5vw', textAlign: 'center' }}>Legal</h2>
-                            <p style={{ textAlign: 'center', fontWeight: '400', color: '#636363' }}>Terms of Services</p>
-                            <p style={{ textAlign: 'center', fontWeight: '400', color: '#636363' }}>Privacy Policy</p>
-                            <p style={{ textAlign: 'center', fontWeight: '400', color: '#636363' }}>Coockies Policy</p>
-                            <p style={{ textAlign: 'center', fontWeight: '400', color: '#636363' }}>Refund Policy</p>
+                            <p style={{ textAlign: 'center', fontWeight: '400', color: '#494949' }}>Terms of Services</p>
+                            <p style={{ textAlign: 'center', fontWeight: '400', color: '#494949' }}>Privacy Policy</p>
+                            <p style={{ textAlign: 'center', fontWeight: '400', color: '#494949' }}>Coockies Policy</p>
+                            <p style={{ textAlign: 'center', fontWeight: '400', color: '#494949' }}>Refund Policy</p>
                         </div>
                     </div>
                 </div>
