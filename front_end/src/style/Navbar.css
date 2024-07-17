@@ -133,3 +133,24 @@
 .fea-des p {
     font-size: small;
 }
+
+
+.profile{
+    /* border: 1px solid black; */
+    position: relative;
+    border-radius: 100px;
+    z-index: 1;
+    
+    /* background-color: #666; */
+}
+
+.user-detail{
+    position: absolute;
+    top: 75px;
+    right: 50px;
+    height: 250px;
+    width: 300px;
+    border: 1px solid black;
+    background-color: white;
+}
+

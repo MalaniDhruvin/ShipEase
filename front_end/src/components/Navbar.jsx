@@ -4,10 +4,25 @@ import ProductHover from './ProductHover';
 import PlateformHover from './PlateformHover';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../store/AuthContext';
+import UserDetails from './UserDetails';
+import { UserProfile } from '../Global/apiCall';
 
 
 export const Navbar = () => {
     const { isLoggedIn, } = useContext(AuthContext);
+    const [dropDown, setdropDown] = useState(false)
+    const [userDetail,setUserDetail]=useState();
+    const handleDetails = async () => {
+        try {
+            setdropDown(!dropDown);
+            const res = await UserProfile();
+            // setUserDetail(res.data)
+            console.log(res);
+        } catch (error) {
+            console.error('Error fetching user profile:', error);
+        }
+    }
+    
     return (
         <div className=" container-1">
             <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
@@ -31,7 +46,15 @@ export const Navbar = () => {
                         <Link to="/contactUs" className="nav-link px-2 link-secondary">Contact Us</Link></li>
                 </ul>
                 <div className="col-md-3 text-end">
-                    {isLoggedIn ? (<p>hello!!</p>
+                    {isLoggedIn ? (
+                        <>
+                            <img src="user.jpg" width={55} className='profile' onClick={handleDetails} alt="" />
+                            {dropDown && (
+                                <>  
+                                    <UserDetails userDetail={userDetail}></UserDetails>
+                                </>
+                            )}
+                        </>
                     ) : (
                         <>
                             <Link to='/login'><button type="button" className="btn btn-outline-primary me-2">Login</button></Link>
