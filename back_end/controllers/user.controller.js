@@ -2,6 +2,7 @@ const {User} = require("../models/user.model.js");
 const ApiResponse  = require("../utils/ApiResponse.js");
 const ApiError = require("../utils/ApiError.js");
 const asyncHandler = require("../utils/asyncHandler.js");
+const jwt = require("jsonwebtoken");
 // const cookieParser = require("cookie-parser");
 
 const generateAccessTokenAndRefreshToken = async (userId) => {
@@ -120,3 +121,40 @@ exports.passwordChange = asyncHandler(async(req, res) => {
         throw new ApiError(400)
     }
 })
+
+exports.accessRefreshToken = (asyncHandler(async(req, res) => {
+    try {
+        const currRefreshToken = req.cookies.refreshToken;
+        if (!currRefreshToken){
+            throw new ApiError(401, "unauthorized request")
+        }
+        const decodedRT = await jwt.verify(currRefreshToken, process.env.JWT_REFRESH_SECRET);
+        const loggedInUser = await User.findById(decodedRT._id);
+        if (!loggedInUser){
+            throw new ApiError(404, "User not found");
+        }
+        const userRefreshToken = loggedInUser.refreshToken;
+        if (currRefreshToken !== userRefreshToken){
+            throw new ApiError(404, "Expired or Invalid Refresh Token");
+        }
+        const {accessToken, refreshToken} = await generateAccessTokenAndRefreshToken(user._id);
+        const options = {
+            httpOnly: true,
+            secure: true
+        }
+        return res
+        .status(200)
+        .cookies("accessToken", accessToken, options)
+        .cookies("refreshToken", refreshToken, options)
+        .json(
+            new ApiResponse(200, {accessToken, refreshToken}, "Access Refresh Token generated")
+        )
+    } catch (error) {
+        if (error instanceof ApiError){
+            return next(error);
+        } else {
+            console.error("Unexpected error: ", error);
+            return next(new ApiError(500, "An unexpected error occurred"));
+        }
+    }
+}))

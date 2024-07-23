@@ -1,5 +1,5 @@
 const express = require("express");
-const { userLogin, userLogout } = require("../controllers/user.controller.js");
+const { userLogin, userLogout, accessRefreshToken } = require("../controllers/user.controller.js");
 const { registerUser } = require("../controllers/registerUser.controller.js");
 const { verifyUser } = require("../middlewares/auth.middleware.js");
 const { bookShipment } = require("../controllers/bookShipment.controller.js");
@@ -14,6 +14,7 @@ router.post("/bookshipment", verifyUser, bookShipment);
 router.get("/getaddress", verifyUser, getAddress);
 router.get("/getshipments", verifyUser, getShipments);
 router.get("/userprofile", verifyUser, userProfile);
-router.post("/logout", userLogout);
+router.get("/logout", userLogout);
+router.post("/refreshtoken", accessRefreshToken);
 
 module.exports = router;
