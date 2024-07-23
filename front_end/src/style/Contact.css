@@ -21,14 +21,23 @@
     border-radius: 10px;
     border: none;
     margin-left: 40px;
+    margin-top: -20px;
+    
     /* box-shadow: 0px 5px 15px 5px rgba(0, 0, 0, 0.212); */
 }
 
+.frt{
+    /* border: 1px solid black; */
+    width: 50%;
+}
+
 .contact-form input{
-    width: 49%;
+    /* width: 49%; */
+    width: 100%;
     height: 40px;
     border: 1px solid gray;
     border-radius: 5px;
+    padding: 0px 10px;
 }
 
 .contact-img{
@@ -45,3 +54,20 @@
     margin-left: 19px;
 }
 
+.form-btn{
+    width: 100%;
+    /* border: 1px solid black; */
+}
+
+.form-btn button{
+    width: 50%;
+    color: white;
+    background-color: rgba(46, 46, 218, 0.877);
+    padding: 6px;
+    border: none;
+    border-radius: 10px;
+}
+
+.form-btn button:hover{
+    background-color: rgba(46, 46, 218, 0.977);
+}

@@ -13,4 +13,4 @@ axios.create({
 // eslint-disable-next-line no-undef
 export const loginUser = (data) => axios.post(apiKeys.login, data);
 export const RegisterUser = (data) => axios.post(apiKeys.register, data);
-export const UserProfile = () => axios.get(apiKeys.userprofile);
+export const UserProfile = () => axios.get(apiKeys.detail);

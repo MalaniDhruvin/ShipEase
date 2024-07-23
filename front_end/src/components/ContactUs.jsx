@@ -8,17 +8,26 @@ const ContactUs = () => {
     <Navbar></Navbar>
     <div className="contact">
       <div className='contact-form'>
-        <h1>Get in touch</h1>
-        <h4>We'd love to hear from you. Please fill out this form.</h4>
-        <form method="post">
-          <input type="text" placeholder='First Name' required />
-          <input type="text" placeholder='Last Name' required style={{ marginLeft: '10px' }} />
-          <input type="email" placeholder="Email" required style={{ width: '100%', marginTop: '10px' }} />
-          <textarea cols="30" rows="5" required style={{ width: '100%', marginTop: '10px', borderRadius: '10px' }}></textarea>
-          <div style={{width:'100%',margin:'10px 0',display:'flex',alignItems:'center',justifyContent:'center'}}>
-          {/* <button> Button</button> */}
+        <form action='https://formspree.io/f/xnnanyvq' method="post">
+          <h1>Get in touch</h1>
+          <h5>We'd love to hear from you. Please fill out this form.</h5>
+          <div style={{ display: 'flex', gap: '5px' }}>
+            <div className='frt'>
+              <p>First name</p>
+              <input type="text" placeholder='First Name' name='first name' style={{ marginTop: '-12px' }} required />
+            </div>
+            <div className='frt'>
+              <p>Last name</p>
+              <input type="text" placeholder='Last Name' name='last name' style={{ marginTop: '-12px' }} required />
+            </div>
           </div>
-          
+          <p style={{ marginTop: '15px' }}>Email</p>
+          <input type="email" placeholder="Email" name='email' required style={{ width: '100%', marginTop: '-10px' }} />
+          <p style={{ marginTop: '15px' }}>Message</p>
+          <textarea cols="30" rows="5" name='message' required style={{ width: '100%', marginTop: '-10px', borderRadius: '10px' }}></textarea>
+          <div className='form-btn' style={{ width: '100%', margin: '10px 0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <button type='sbmit'>Send message</button>
+          </div>
         </form>
       </div>
       <div className="contact-img">

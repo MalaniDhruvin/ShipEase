@@ -11,10 +11,10 @@ import { UserProfile } from '../Global/apiCall';
 export const Navbar = () => {
     const { isLoggedIn, } = useContext(AuthContext);
     const [dropDown, setdropDown] = useState(false)
-    const [userDetail,setUserDetail]=useState();
+    const [userDetail, setUserDetail] = useState();
     const handleDetails = async () => {
+        setdropDown(!dropDown);
         try {
-            setdropDown(!dropDown);
             const res = await UserProfile();
             // setUserDetail(res.data)
             console.log(res);
@@ -22,7 +22,7 @@ export const Navbar = () => {
             console.error('Error fetching user profile:', error);
         }
     }
-    
+
     return (
         <div className=" container-1">
             <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
@@ -50,7 +50,7 @@ export const Navbar = () => {
                         <>
                             <img src="user.jpg" width={55} className='profile' onClick={handleDetails} alt="" />
                             {dropDown && (
-                                <>  
+                                <>
                                     <UserDetails userDetail={userDetail}></UserDetails>
                                 </>
                             )}
