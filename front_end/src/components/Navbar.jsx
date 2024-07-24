@@ -5,22 +5,14 @@ import PlateformHover from './PlateformHover';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../store/AuthContext';
 import UserDetails from './UserDetails';
-import { UserProfile } from '../Global/apiCall';
+// import { UserProfile } from '../Global/apiCall';
 
 
 export const Navbar = () => {
     const { isLoggedIn, } = useContext(AuthContext);
     const [dropDown, setdropDown] = useState(false)
-    const [userDetail, setUserDetail] = useState();
     const handleDetails = async () => {
         setdropDown(!dropDown);
-        try {
-            const res = await UserProfile();
-            // setUserDetail(res.data)
-            console.log(res);
-        } catch (error) {
-            console.error('Error fetching user profile:', error);
-        }
     }
 
     return (
@@ -51,7 +43,7 @@ export const Navbar = () => {
                             <img src="user.jpg" width={55} className='profile' onClick={handleDetails} alt="" />
                             {dropDown && (
                                 <>
-                                    <UserDetails userDetail={userDetail}></UserDetails>
+                                    <UserDetails></UserDetails>
                                 </>
                             )}
                         </>

@@ -4,7 +4,7 @@ import '../style/Register.css'
 import { AuthContext } from '../store/AuthContext';
 
 const Register = () => {
-    const { login } = useContext(AuthContext);
+    const { login, setDetail } = useContext(AuthContext);
     const [registerUser, setregisterUser] = useState({ fullname: "", phone: "", email: "", address: { streetAddress: "", country: "", state: "", city: "", postalCode: "" } });
     const getInfo = (e) => {
         const { name, value } = e.target;
@@ -28,6 +28,8 @@ const Register = () => {
         RegisterUser(registerUser)
             .then((response) => {
                 console.log(response.data);
+                setDetail(response.data.data);
+                localStorage.setItem("Details", JSON.stringify(response.data.data));
                 alert("User registered successfully!");
                 setregisterUser({
                     fullname: "", phone: "", email: "", password: "", address: { streetAddress: "", country: "", state: "", city: "", postalCode: "" }

@@ -4,7 +4,7 @@ import '../style/Login.css'
 import { AuthContext } from '../store/AuthContext';
 
 const Login = () => {
-    const { login } = useContext(AuthContext);
+    const { login, setDetail, Details } = useContext(AuthContext);
     const [user, setUser] = useState({ email: "", password: "" });
     const getInfo = (i) => {
         const { name, value, type, checked } = i.target;
@@ -13,17 +13,16 @@ const Login = () => {
             [name]: type === 'checkbox' ? checked : value,
         });
     };
-    const handleLoginForm = (e) => {
+    const handleLoginForm = async (e) => {
         e.preventDefault();
-        loginUser(user)
-            .then((response) => {
-                console.log(response.data);
-                login()
-                window.location.href = "/";
-            })
-            .catch((error) => {
-                alert(error.response.data.message);
-            });
+        // loginUser(user)
+        const response = await loginUser(user)
+        // console.log(response.data.data)
+        setDetail(response.data.data);
+        localStorage.setItem("Details", JSON.stringify(response.data.data))
+        login()
+        // console.log(Details)
+        window.location.href = "/";
     };
     return (
         <div className="d-flex align-items-center py-2 login" cz-shortcut-listen="true">
