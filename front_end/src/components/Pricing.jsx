@@ -1,6 +1,8 @@
 import React from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
+import { FaCheck } from "react-icons/fa";
+import { Link } from 'react-router-dom'
 
 const Pricing = () => {
   return (<>
@@ -15,28 +17,32 @@ const Pricing = () => {
             '-webkit-text-fill-color': 'transparent',
             'background-clip': 'text',
             color: 'transparent',
-            fontWeight:300
+            fontWeight: 300
           }}>Choose a plan</h1>
-          <h1 style={{fontSize:'60px',color:'#0B0757',fontWeight:'700'}}>that works best for you</h1>
+          <h1 style={{ fontSize: '60px', color: '#0B0757', fontWeight: '700' }}>that works best for you</h1>
         </div>
       </header>
 
       <main className='price-container'>
         <div className="row row-cols-1 row-cols-md-3 mb-3 text-center">
-          <div className="col">
+          <div className="col price-card">
             <div className="card mb-4 rounded-3 shadow-sm">
               <div className="card-header py-3">
                 <h4 className="my-0 fw-normal">Lite</h4>
               </div>
               <div className="card-body">
-                <h1 className="card-title pricing-card-title">$0<small className="text-body-secondary fw-light">/mo</small></h1>
-                <ul className="list-unstyled mt-3 mb-4">
-                  <li>10 users included</li>
-                  <li>2 GB of storage</li>
-                  <li>Email support</li>
-                  <li>Help center access</li>
-                </ul>
+                <h4 className="card-title pricing-card-title">Rs. 26/500gms</h4>
+                <p style={{ fontSize: '16px', fontWeight: 500, color: '#333333' }}>A free and simplified plan best for social, small and medium e-commerce sellers</p>
+
                 <button type="button" className="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
+                <ul style={{ textAlign: 'left', fontWeight: 400 }} className="list-unstyled mt-3 mb-4">
+                  <li><FaCheck style={{ color: '#5EC93C', marginRight: '6px' }} />1 Ecommerce Channel Integration</li>
+                  <li><FaCheck style={{ color: '#5EC93C', marginRight: '6px' }} />Chat, Call &amp; Email Support</li>
+                  <li><FaCheck style={{ color: '#5EC93C', marginRight: '6px' }} />Automated Channel Order Sync</li>
+                  <li><FaCheck style={{ color: '#5EC93C', marginRight: '6px' }} />Domestic and International Shipping</li>
+                  <li><FaCheck style={{ color: '#5EC93C', marginRight: '6px' }} />Priority Support</li>
+                  <li><FaCheck style={{ color: '#5EC93C', marginRight: '6px' }} />Dedicated Account Manager</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -46,14 +52,18 @@ const Pricing = () => {
                 <h4 className="my-0 fw-normal">Professional</h4>
               </div>
               <div className="card-body">
-                <h1 className="card-title pricing-card-title">$15<small className="text-body-secondary fw-light">/mo</small></h1>
-                <ul className="list-unstyled mt-3 mb-4">
-                  <li>20 users included</li>
-                  <li>10 GB of storage</li>
-                  <li>Priority email support</li>
-                  <li>Help center access</li>
-                </ul>
+                <h4 className="card-title pricing-card-title">Rs. 20/500gms</h4>
+                <p style={{ fontSize: '16px', fontWeight: 500, color: '#333333' }}>Dynamic plans for sellers who sell on multiple marketplaces and websites</p>
+
                 <button type="button" className="w-100 btn btn-lg btn-primary">Get started</button>
+                <ul style={{ textAlign: 'left', fontWeight: 400 }} className="list-unstyled mt-3 mb-4">
+                  <li><FaCheck style={{ color: '#5EC93C', marginRight: '6px' }} />Multiple Ecommerce Channel Integrations</li>
+                  <li><FaCheck style={{ color: '#5EC93C', marginRight: '6px' }} />Priority Support</li>
+                  <li><FaCheck style={{ color: '#5EC93C', marginRight: '6px' }} />Automated Channel Order Sync</li>
+                  <li><FaCheck style={{ color: '#5EC93C', marginRight: '6px' }} />Domestic &amp; International Shipping</li>
+                  <li><FaCheck style={{ color: '#5EC93C', marginRight: '6px' }} />Channel Price &amp; Inventory Sync</li>
+                  <li><FaCheck style={{ color: '#5EC93C', marginRight: '6px' }} />Free NDR Call Center Setup</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -63,113 +73,22 @@ const Pricing = () => {
                 <h4 className="my-0 fw-normal">Enterprise</h4>
               </div>
               <div className="card-body">
-                <h1 className="card-title pricing-card-title">$29<small className="text-body-secondary fw-light">/mo</small></h1>
-                <ul className="list-unstyled mt-3 mb-4">
-                  <li>30 users included</li>
-                  <li>15 GB of storage</li>
-                  <li>Phone and email support</li>
-                  <li>Help center access</li>
+                <h4 className="card-title pricing-card-title">Shipping solution</h4>
+                <p style={{ fontSize: '16px', fontWeight: 500, color: '#333333' }}>Get an exclusive plan tailored to meet your business needs</p>
+                <Link to='/contactUs'><button type="button" className="w-100 btn btn-lg btn-primary">Contact us</button></Link>
+                <ul style={{ textAlign: 'left', fontWeight: 400 }} className="list-unstyled mt-3 mb-4">
+                  <li><FaCheck style={{ color: '#5EC93C', marginRight: '6px' }} />Customized Integrations</li>
+                  <li><FaCheck style={{ color: '#5EC93C', marginRight: '6px' }} />Dedicated Account Manager</li>
+                  <li><FaCheck style={{ color: '#5EC93C', marginRight: '6px' }} />Automated Channel Order Sync</li>
+                  <li><FaCheck style={{ color: '#5EC93C', marginRight: '6px' }} />Domestic &amp; International Shipping</li>
+                  <li><FaCheck style={{ color: '#5EC93C', marginRight: '6px' }} />Multi Channel Price &amp; Inventory Sync</li>
+                  <li><FaCheck style={{ color: '#5EC93C', marginRight: '6px' }} />Free NDR Call Center Setup</li>
                 </ul>
-                <button type="button" className="w-100 btn btn-lg btn-primary">Contact us</button>
               </div>
             </div>
           </div>
         </div>
-
-        {/* <h2 className="display-6 text-center mb-4">Compare plans</h2> */}
-
-        {/* <div className="table-responsive">
-      <table className="table text-center">
-        <thead>
-          <tr>
-            <th style={{"width": "34%"}}></th>
-            <th style={{"width": "22%"}}>Free</th>
-            <th style={{"width": "22%"}}>Pro</th>
-            <th style={{"width": "22%"}}>Enterprise</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row" className="text-start">Public</th>
-            <td><svg className="bi" width="24" height="24"><use xlinkHref="#check"></use></svg></td>
-            <td><svg className="bi" width="24" height="24"><use xlinkHref="#check"></use></svg></td>
-            <td><svg className="bi" width="24" height="24"><use xlinkHref="#check"></use></svg></td>
-          </tr>
-          <tr>
-            <th scope="row" className="text-start">Private</th>
-            <td></td>
-            <td><svg className="bi" width="24" height="24"><use xlinkHref="#check"></use></svg></td>
-            <td><svg className="bi" width="24" height="24"><use xlinkHref="#check"></use></svg></td>
-          </tr>
-        </tbody>
-
-        <tbody>
-          <tr>
-            <th scope="row" className="text-start">Permissions</th>
-            <td><svg className="bi" width="24" height="24"><use xlinkHref="#check"></use></svg></td>
-            <td><svg className="bi" width="24" height="24"><use xlinkHref="#check"></use></svg></td>
-            <td><svg className="bi" width="24" height="24"><use xlinkHref="#check"></use></svg></td>
-          </tr>
-          <tr>
-            <th scope="row" className="text-start">Sharing</th>
-            <td></td>
-            <td><svg className="bi" width="24" height="24"><use xlinkHref="#check"></use></svg></td>
-            <td><svg className="bi" width="24" height="24"><use xlinkHref="#check"></use></svg></td>
-          </tr>
-          <tr>
-            <th scope="row" className="text-start">Unlimited members</th>
-            <td></td>
-            <td><svg className="bi" width="24" height="24"><use xlinkHref="#check"></use></svg></td>
-            <td><svg className="bi" width="24" height="24"><use xlinkHref="#check"></use></svg></td>
-          </tr>
-          <tr>
-            <th scope="row" className="text-start">Extra security</th>
-            <td></td>
-            <td></td>
-            <td><svg className="bi" width="24" height="24"><use xlinkHref="#check"></use></svg></td>
-          </tr>
-        </tbody>
-      </table>
-    </div> */}
       </main>
-
-      {/* <footer className="pt-4 my-md-5 pt-md-5 border-top">
-    <div className="row">
-      <div className="col-12 col-md">
-        <img className="mb-2" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="24" height="19" />
-        <small className="d-block mb-3 text-body-secondary">© 2017–2024</small>
-      </div>
-      <div className="col-6 col-md">
-        <h5>Features</h5>
-        <ul className="list-unstyled text-small">
-          <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
-          <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Random feature</a></li>
-          <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Team feature</a></li>
-          <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
-          <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Another one</a></li>
-          <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Last time</a></li>
-        </ul>
-      </div>
-      <div className="col-6 col-md">
-        <h5>Resources</h5>
-        <ul className="list-unstyled text-small">
-          <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Resource</a></li>
-          <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Resource name</a></li>
-          <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Another resource</a></li>
-          <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Final resource</a></li>
-        </ul>
-      </div>
-      <div className="col-6 col-md">
-        <h5>About</h5>
-        <ul className="list-unstyled text-small">
-          <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Team</a></li>
-          <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Locations</a></li>
-          <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Privacy</a></li>
-          <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Terms</a></li>
-        </ul>
-      </div>
-    </div>
-  </footer> */}
     </div>
     <Footer></Footer>
   </>
