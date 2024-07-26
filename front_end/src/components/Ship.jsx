@@ -1,11 +1,13 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useContext } from 'react';
 import Dropdown from './Dropdown'
 import '../style/Ship.css'
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { BookShipment } from '../Global/apiCall';
+import { AuthContext } from '../store/AuthContext';
 
 const Ship = () => {
+  const {isLoggedIn}=useContext(AuthContext);
   const [visible, setVisible] = useState(false);
   const [weight, setWeight] = useState({ origin: { country: "", city: "", streetAddress: "", postalCode: "", state: "" }, destination: { country: "", city1: "", streetAddress1: "", postalCode1: "", state1: "" }, weight: "" })
   const divRef = useRef(null);
@@ -61,19 +63,24 @@ const Ship = () => {
 
 
   const handleBook = (e) => {
-    e.preventDefault(); // Prevent default form submission
-    BookShipment(weight)
+    e.preventDefault();
+     // Prevent default form submission
+     if(isLoggedIn){
+      BookShipment(weight)
         .then((response) => {
             console.log(response.data);
             alert("Shipment Booked successfully!");
             setWeight({ origin: { country: "", city: "", streetAddress: "", postalCode: "", state: "" }, destination: { country: "", city1: "", streetAddress1: "", postalCode1: "", state1: "" }, weight: "" });
-            // login()
-            // window.location.href = "/";
         })
         .catch((error) => {
             console.error("Error:", error);
             alert("Failed to register user. Please try again.");
         });
+     }
+     else{
+      window.location.href = "/login";
+     }
+    
   }
 
   return (<>

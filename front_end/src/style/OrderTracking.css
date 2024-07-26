@@ -1,4 +1,27 @@
 .tracking-container{
     display: flex;
     justify-content: space-between;
+    min-height: 550px;
+    position: relative;
+    border-top: none;
+}
+
+.Tracking-containers{
+    /* border: 1px solid black; */
+    position: absolute;
+    left: 550px;
+    top: 0px;
+}
+
+.tracking-btn{
+    width: 120px;
+    color: white;
+    background-color: rgba(46, 46, 218, 0.877);
+    padding: 6px;
+    border: none;
+    border-radius: 10px;
+}
+
+.tracking-btn:hover{
+    background-color: rgba(46, 46, 218, 0.977);
 }

@@ -1,83 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import '../style/OrderTracking.css'
 import { Getshipment } from '../Global/apiCall';
+import Tracking from './Tracking';
+import { Link } from 'react-router-dom';
 
-const Container = styled.div`
-  padding: 20px;
-  max-width: 400px;
-  margin: 0 auto;
-  font-family: Arial, sans-serif;
-`;
+const OrderTracking = () => {
+  const [shipment, setShipment] = useState([]);
+  const [tracking, setTracking] = useState(null);
+  const [ship, setShip] = useState(false);
 
-const Header = styled.h2`
-  text-align: center;
-  margin-bottom: 20px;
-`;
-
-const ProgressContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  position: relative;
-`;
-
-const Step = styled.div`
-  text-align: left;
-  flex: 1;
-  position: relative;
-  padding-left: 40px;
-  margin-bottom: 20px;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-`;
-
-const StepIcon = styled.div`
-  width: 30px;
-  height: 30px;
-  background-color: ${props => props.active ? '#4caf50' : '#ddd'};
-  border-radius: 50%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 1;
-`;
-
-const StepLabel = styled.div`
-  margin-top: 5px;
-  font-weight: bold;
-`;
-
-const StepDescription = styled.div`
-  margin-top: 5px;
-  font-size: 14px;
-  color: #555;
-`;
-
-const StepBar = styled.div`
-  width: 4px;
-  background-color: ${props => props.active ? '#4caf50' : '#ddd'};
-  position: absolute;
-  left: 13px;
-  top: 30px;
-  bottom: -20px;
-  z-index: 0;
-`;
-
-const steps = [
-  { label: 'Order Placed', description: 'We have received your order and are preparing it for shipment.' },
-  { label: 'Processing', description: 'Your order is being processed and will be shipped soon.' },
-  { label: 'Shipped', description: 'Your order has been shipped and is on its way to the delivery address.' },
-  { label: 'Out for Delivery', description: 'The delivery agent is on their way to deliver your order.' },
-  { label: 'Delivered', description: 'Your order has been delivered. Enjoy your purchase!' }
-];
-
-const OrderTracking = ({ currentStep = 2 }) => {
-  const [shipment, setShipment] = useState();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -90,54 +23,74 @@ const OrderTracking = ({ currentStep = 2 }) => {
     };
 
     fetchData();
-  }, []); // Empty dependency array means this useEffect runs once on component mount
+  }, []); 
 
   useEffect(() => {
-    console.log(shipment); // Log shipment whenever it changes
+    console.log(shipment); 
   }, [shipment]);
 
-  return (<>
-    <Navbar></Navbar>
-    <div className="tracking-container">
-      <div class="flex-shrink-0 p-3" style={{ width: '280px', border: '1px solid black' }}>
-        <a href="/" class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
-          <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
-          <span class="fs-5 fw-semibold">Overview</span>
-        </a>
-        <ul class="list-unstyled ps-0">
-          <li class="mb-1">
-            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
-            Home {Array.isArray(shipment) ? shipment.length : ""}
-            </button>
-            <div class="collapse" id="home-collapse">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Updates</a></li>
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Reports</a></li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <Container>
-        <Header>Order Tracking</Header>
-        <ProgressContainer>
-          {steps.map((step, index) => (
-            <Step key={index}>
-              <StepIcon active={index <= currentStep} />
-              {index < steps.length - 1 && (
-                <StepBar active={index < currentStep} />
-              )}
-              <StepLabel>{step.label}</StepLabel>
-              <StepDescription>{step.description}</StepDescription>
-            </Step>
-          ))}
-        </ProgressContainer>
-      </Container>
-    </div>
+  const handleShip = () => {
+    setShip(!ship);
+  }
 
-    <Footer></Footer>
-  </>
+  const handleTracking = (index) => {
+    setTracking(index === tracking ? null : index);
+  }
+
+  return (
+    <>
+      <Navbar />
+      <div className="tracking-container">
+        <div className="flex-shrink-0 p-3" style={{ width: '280px', border: '1px solid black' }}>
+          <a href="/" className="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+            <svg className="bi pe-none me-2" width="30" height="24">
+              <use xlinkHref="#bootstrap"></use>
+            </svg>
+            <span className="fs-5 fw-semibold">Overview</span>
+          </a>
+          <ul className="list-unstyled ps-0">
+            <li className="mb-1">
+              <button
+                onClick={handleShip}
+                style={{ marginTop: '-19px' }}
+                className="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                data-bs-toggle="collapse"
+                data-bs-target="#home-collapse"
+                aria-expanded="false"
+              >
+                Shipments {Array.isArray(shipment) ? (
+                  <p
+                    style={{ marginTop: '19px', marginLeft: '5px', borderRadius: '50px', padding: '1px 8px', backgroundColor: '#6140B4', color: 'white', fontSize: '12px' }}
+                  >
+                    {shipment.length}
+                  </p>
+                ) : ""}
+              </button>
+            </li>
+            <li style={{ marginLeft: '12px', marginTop: '-10px' }}>
+              {ship && (
+                Array.isArray(shipment) && shipment.length > 0 ? (
+                  shipment.map((item, index) => (
+                    <div key={index}>
+                      <p className="mb-1" onClick={() => handleTracking(index)}>
+                        shipment {index + 1}
+                      </p>
+                      {tracking === index && <Tracking Steps={index-1} />}
+                    </div>
+                  ))
+                ) : ""
+              )}
+            </li>
+          </ul>
+        </div>
+        {Array.isArray(shipment) && shipment.length==0?<div style={{border:'0px solid black',marginRight:'290px',display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
+          <h1 style={{color:"#0B0757"}}>There is no Shipping Details</h1>
+          <h4 style={{color:'#636478',fontWeight:'400'}}>Start Shipping Now</h4>
+          <Link to='/shipping'><button className='tracking-btn'>Ship now</button></Link>
+        </div>:""}
+      </div>
+      <Footer />
+    </>
   );
 };
 
