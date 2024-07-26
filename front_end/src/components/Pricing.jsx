@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import { FaCheck } from "react-icons/fa";
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../store/AuthContext';
 
 const Pricing = () => {
+  const {isLoggedIn} =useContext(AuthContext)
   return (<>
     <Navbar></Navbar>
     <div className="container py-3">
@@ -33,8 +35,7 @@ const Pricing = () => {
               <div className="card-body">
                 <h4 className="card-title pricing-card-title">Rs. 26/500gms</h4>
                 <p style={{ fontSize: '16px', fontWeight: 500, color: '#333333' }}>A free and simplified plan best for social, small and medium e-commerce sellers</p>
-
-                <button type="button" className="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
+                {isLoggedIn?<button type="button" className="w-100 btn btn-lg btn-outline-primary">Select to Shipping</button>:<button type="button" className="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>}
                 <ul style={{ textAlign: 'left', fontWeight: 400 }} className="list-unstyled mt-3 mb-4">
                   <li><FaCheck style={{ color: '#5EC93C', marginRight: '6px' }} />1 Ecommerce Channel Integration</li>
                   <li><FaCheck style={{ color: '#5EC93C', marginRight: '6px' }} />Chat, Call &amp; Email Support</li>

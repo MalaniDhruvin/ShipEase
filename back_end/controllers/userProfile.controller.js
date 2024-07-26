@@ -16,11 +16,6 @@ exports.userProfile = asyncHandler( async (req, res) => {
         )
         
     } catch (error) {
-        if (error instanceof ApiError) {
-            return next(error);
-        } else {
-            console.error("Unexpected error: ", error);
-            return next(new ApiError(500, "An unexpected error occurred"));
-        }
+        throw new ApiError(400, error.message)
     }
 })

@@ -1,12 +1,13 @@
-import { useState,useRef } from 'react';
+import { useState, useRef } from 'react';
 import Dropdown from './Dropdown'
 import '../style/Ship.css'
 import Navbar from './Navbar';
 import Footer from './Footer';
+import { BookShipment } from '../Global/apiCall';
 
 const Ship = () => {
   const [visible, setVisible] = useState(false);
-  const [weight, setWeight] = useState({ weight: "", length: "", width: "", height: "" })
+  const [weight, setWeight] = useState({ origin: { country: "", city: "", streetAddress: "", postalCode: "", state: "" }, destination: { country: "", city1: "", streetAddress1: "", postalCode1: "", state1: "" }, weight: "" })
   const divRef = useRef(null);
   const handleship = () => {
     setVisible(true)
@@ -16,13 +17,67 @@ const Ship = () => {
       }
     }, 100);
   }
-  const handleweight = (i) => {
-    setWeight(prevWeight => ({ ...prevWeight, [i.target.name]: i.target.value }));
-    // console.log(weight)
-    console.log({ ...weight, [i.target.name]: i.target.value });
+  const handleweight = (e) => {
+    const { name, value } = e.target;
+    if (name in weight.origin) {
+      setWeight(prevState => ({
+        ...prevState,
+        origin: {
+          ...prevState.origin,
+          [name]: value
+        }
+      }));
+    }
+    else if (name in weight.destination) {
+      setWeight(prevState => ({
+        ...prevState,
+        destination: {
+          ...prevState.destination,
+          [name]: value
+        }
+      }));
+    }
+
+    else {
+      setWeight(prevState => ({
+        ...prevState,
+        [name]: value
+      }));
+    }
+  };
+
+
+  const handleSelectCountry = (target, country) => {
+    // Assuming you want to update the origin country
+    setWeight(prevState => ({
+      ...prevState,
+      [target]: {
+        ...prevState[target],
+        country: country
+      }
+    }));
+    console.log(target, country)
+  };
+
+
+  const handleBook = (e) => {
+    e.preventDefault(); // Prevent default form submission
+    BookShipment(weight)
+        .then((response) => {
+            console.log(response.data);
+            alert("Shipment Booked successfully!");
+            setWeight({ origin: { country: "", city: "", streetAddress: "", postalCode: "", state: "" }, destination: { country: "", city1: "", streetAddress1: "", postalCode1: "", state1: "" }, weight: "" });
+            // login()
+            // window.location.href = "/";
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+            alert("Failed to register user. Please try again.");
+        });
   }
+
   return (<>
-  <Navbar></Navbar>
+    <Navbar></Navbar>
     <div className="ship-container">
       <div className="ship-title">
         <h1>
@@ -53,51 +108,81 @@ const Ship = () => {
         </div>
       </div>
       <div className="ship-form-container">
-        <p style={{ 'marginTop': '20px',fontWeight:500 }}>From</p>
+        <p style={{ 'marginTop': '20px', fontWeight: 500 }}>From</p>
         <div className="form-content-container">
           <div className="form-content" >
-            <Dropdown></Dropdown>
+            <Dropdown selectCountry={handleSelectCountry} target='origin'></Dropdown>
+            <div style={{ width: "200px" }} className='form-city'>
+              <div>
+                <p>Street</p>
+                {/* <p>(optional)</p> */}
+              </div>
+              <input type="text" onChange={handleweight} name='streetAddress' required />
+            </div>
+            <div className='form-city'>
+              <div>
+                <p >State</p>
+                {/* <p>(optional)</p> */}
+              </div>
+              <input type="text" onChange={handleweight} name='state' required />
+            </div>
           </div>
           <div className='form-city'>
             <div>
               <p>City</p>
-              <p>(optional)</p>
+              {/* <p>(optional)</p> */}
             </div>
-            <input type="text" />
+            <input type="text" onChange={handleweight} name='city' required />
           </div>
           <div className='form-city'>
             <div>
               <p>Pincode</p>
-              <p>(optional)</p>
+              {/* <p>(optional)</p>? */}
             </div>
-            <input type="text" />
+            <input type="text" onChange={handleweight} name='postalCode' required />
           </div>
         </div>
 
         {/* //second part */}
-        <p style={{ 'marginTop': '45px',fontWeight:500 }}>To</p>
+        <p style={{ 'marginTop': '45px', fontWeight: 500 }}>To</p>
         <div className="form-content-container">
           <div className="form-content" >
-            <Dropdown></Dropdown>
+            <Dropdown selectCountry={handleSelectCountry} target='destination'></Dropdown>
+            {/* <input type="text" style={{border:'1px solid #6364789a'}} /> */}
+            <div style={{ width: "200px" }} className='form-city'>
+              <div>
+                <p>Street</p>
+                {/* <p>(optional)</p> */}
+              </div>
+              <input type="text" onChange={handleweight} name='streetAddress1' required />
+            </div>
+            <div className='form-city'>
+              <div>
+                <p>State</p>
+                {/* <p>(optional)</p> */}
+              </div>
+              <input type="text" onChange={handleweight} required name='state1' />
+            </div>
+            {/* <input type="text" style={{border:'1px solid #6364789a'}} /> */}
           </div>
           <div className='form-city'>
             <div>
               <p>City</p>
-              <p>(optional)</p>
+              {/* <p>(optional)</p> */}
             </div>
-            <input type="text" />
+            <input type="text" onChange={handleweight} name='city1' required />
           </div>
           <div className='form-city'>
             <div>
               <p>Pincode</p>
-              <p>(optional)</p>
+              {/* <p>(optional)</p> */}
             </div>
-            <input type="text" required />
+            <input type="text" onChange={handleweight} name='postalCode1' required />
           </div>
         </div>
 
         <div className="form-button">
-          <button role="button"  class="button-name" onClick={handleship}>Describe your shipment</button>
+          <button role="button" type='submit' class="button-name" onClick={handleship}>Describe your shipment</button>
         </div>
 
       </div>
@@ -120,7 +205,7 @@ const Ship = () => {
                 <p>Length</p>
                 <p>(cm)</p>
               </div>
-              <input type="text" name='lenght' onChange={handleweight} />
+              <input type="text" name='lenght' />
             </div>
             <img src="cross_222301.png" width={15} height={15} style={{ margin: '0px 3px' }} alt="" />
             <div className='form-city' style={{ height: '65px', borderRadius: '5px' }}>
@@ -128,7 +213,7 @@ const Ship = () => {
                 <p>Width</p>
                 <p>(cm)</p>
               </div>
-              <input type="text" name='width' onChange={handleweight} />
+              <input type="text" name='width' />
             </div>
             <img src="cross_222301.png" width={15} height={15} style={{ margin: '0px 3px' }} alt="" />
             <div className='form-city' style={{ height: '65px', borderRadius: '5px' }}>
@@ -136,17 +221,17 @@ const Ship = () => {
                 <p>Height</p>
                 <p>(cm)</p>
               </div>
-              <input type="text" required name='height' onChange={handleweight} />
+              <input type="text" required name='height' />
             </div>
           </div>
           <h1 style={{ fontSize: '1.5vw', marginTop: '19px' }}>Total shipment Weight: {weight.weight != "" ? weight.weight : 0}kg</h1>
         </div>
-        <button>Ship Now</button>
+        <button type='submit' onClick={handleBook}>Ship Now</button>
       </div>)}
 
     </div>
     <Footer></Footer>
-    </>
+  </>
   );
 };
 

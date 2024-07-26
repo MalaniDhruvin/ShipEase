@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import '../style/OrderTracking.css'
+import { Getshipment } from '../Global/apiCall';
 
 const Container = styled.div`
   padding: 20px;
@@ -76,10 +77,29 @@ const steps = [
 ];
 
 const OrderTracking = ({ currentStep = 2 }) => {
+  const [shipment, setShipment] = useState();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await Getshipment();
+        console.log(response.data.data);
+        setShipment(response.data.data);
+      } catch (error) {
+        console.error('Error fetching shipment data:', error);
+      }
+    };
+
+    fetchData();
+  }, []); // Empty dependency array means this useEffect runs once on component mount
+
+  useEffect(() => {
+    console.log(shipment); // Log shipment whenever it changes
+  }, [shipment]);
+
   return (<>
     <Navbar></Navbar>
     <div className="tracking-container">
-      <div class="flex-shrink-0 p-3" style={{ width: '280px',border:'1px solid black' }}>
+      <div class="flex-shrink-0 p-3" style={{ width: '280px', border: '1px solid black' }}>
         <a href="/" class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
           <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
           <span class="fs-5 fw-semibold">Overview</span>
@@ -87,7 +107,7 @@ const OrderTracking = ({ currentStep = 2 }) => {
         <ul class="list-unstyled ps-0">
           <li class="mb-1">
             <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
-              Home
+            Home {Array.isArray(shipment) ? shipment.length : ""}
             </button>
             <div class="collapse" id="home-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -96,7 +116,7 @@ const OrderTracking = ({ currentStep = 2 }) => {
                 <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Reports</a></li>
               </ul>
             </div>
-            </li>
+          </li>
         </ul>
       </div>
       <Container>

@@ -17,11 +17,6 @@ exports.verifyUser = asyncHandler(async(req, res, next) => {
         req.user = user;
         next();
     } catch (error) {
-        if (error instanceof ApiError) {
-            return next(error);
-        } else {
-            console.error("Unexpected error: ", error);
-            return next(new ApiError(500, "An unexpected error occurred"));
-        }
+        throw new ApiError(400, error.message)
     }
 })

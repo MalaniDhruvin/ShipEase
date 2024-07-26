@@ -11,6 +11,8 @@ axios.create({
 });
 
 // eslint-disable-next-line no-undef
-export const loginUser = (data) => axios.post(apiKeys.login, data);
-export const RegisterUser = (data) => axios.post(apiKeys.register, data);
+export const loginUser = (data) => axios.post(apiKeys.login, data, { withCredentials: true });
+export const RegisterUser = (data) => axios.post(apiKeys.register, data, { withCredentials: true });
+export const BookShipment = (data) => axios.post(apiKeys.bookshipment, data, { withCredentials: true });
+export const Getshipment = () => axios.get(apiKeys.shipment, { withCredentials: true });
 // export const UserProfile = () => axios.get(apiKeys.detail);

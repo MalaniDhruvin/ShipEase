@@ -29,7 +29,7 @@ exports.bookShipment = asyncHandler(async (req, res) => {
             throw new ApiError(400, "Some Address Fields are Missing")
         }
         if (
-            [weight, pickup_date, delivery_date, cost].some((field) => field === undefined)
+            [weight].some((field) => field === undefined)
         ){
             throw new ApiError(400, "Some Fields are Missing")
         }
@@ -43,10 +43,10 @@ exports.bookShipment = asyncHandler(async (req, res) => {
             origin,
             destination,
             weight,
-            status: 'pending',
-            pickup_date,
-            delivery_date,
-            cost,
+            status: 'pending',  
+            // pickup_date,
+            // delivery_date,
+            // cost,
         })
         
         if(!shipment){
@@ -62,11 +62,6 @@ exports.bookShipment = asyncHandler(async (req, res) => {
             new ApiResponse(201, shipment, "Shipment Registerd Successfully")
         )
     } catch (error) {
-        if (error instanceof ApiError) {
-            return next(error);
-        } else {
-            console.error("Unexpected error: ", error);
-            return next(new ApiError(500, "An unexpected error occurred"));
-        }        
+        throw new ApiError(400, error.message)      
     }
 })

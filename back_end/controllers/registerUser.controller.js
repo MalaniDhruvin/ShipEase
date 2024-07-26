@@ -47,12 +47,7 @@ exports.registerUser = asyncHandler(async (req, res) => {
             new ApiResponse(201, createdUser, "User Registerd Successfully")
         )
     } catch (error) {
-        if (error instanceof ApiError) {
-            return next(error);
-        } else {
-            console.error("Unexpected error: ", error);
-            return next(new ApiError(500, "An unexpected error occurred"));
-        }
+        throw new ApiError(400, error.message)
     }
 
 })

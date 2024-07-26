@@ -84,10 +84,18 @@
 
 .form-content {
     position: relative;
+    display: flex;
+    /* gap: 4px; */
+    width: 600px;
+}
+
+.form-content input{
+    border-radius: 10px;
+    /* border: 1px solid #6364789a; */
 }
 
 .ship-drop {
-    width: 400px;
+    width: 313px;
     max-height: 250px;
     height: fit-content;
     border: 1px solid #6364789a;
@@ -117,14 +125,15 @@
 }
 
 .form-city {
-    width: 200px;
+    width: 150px;
     height: 100%;
     border: 1px solid #6364789a;
     display: flex;
     flex-direction: column;
     /* gap: 0; */
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 10px;
+    margin-left: 6px;
 }
 
 .form-city div {
@@ -138,6 +147,7 @@
 .form-city input {
     outline: none;
     border: none;
+    width: 100%;
     /* height: 20px */
     font-size: 1vw;
     margin-top: -15px;
