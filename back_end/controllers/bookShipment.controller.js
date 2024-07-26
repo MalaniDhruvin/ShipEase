@@ -16,7 +16,7 @@ exports.bookShipment = asyncHandler(async (req, res) => {
         if (!userId){
             throw new ApiError(400, "Registration is Required to Book Shipment");
         }
-        const {origin, destination, weight, pickup_date, delivery_date, cost} = req.body;
+        const {origin, destination, weight, cost} = req.body;
     
         if (
             Object.values(origin).some((field) => field === undefined)
@@ -33,6 +33,11 @@ exports.bookShipment = asyncHandler(async (req, res) => {
         ){
             throw new ApiError(400, "Some Fields are Missing")
         }
+
+        const pickup_date = new Date();
+        const delivery_date = new Date();
+        const deliveryTimeframe = Math.floor(Math.random() * 3) + 2;
+        delivery_date.setDate(pickup_date.getDate() + deliveryTimeframe);
         
     
         const trackingId = uuidv4();
@@ -44,9 +49,9 @@ exports.bookShipment = asyncHandler(async (req, res) => {
             destination,
             weight,
             status: 'pending',  
-            // pickup_date,
-            // delivery_date,
-            // cost,
+            pickup_date,
+            delivery_date,
+            cost,
         })
         
         if(!shipment){
