@@ -50,9 +50,9 @@ const Ship = () => {
     if (name === 'weight') {
       weight.cost = value * 60;
     }
-  
 
-  return newState;
+
+    return newState;
   };
 
   const handleCost = () => {
@@ -79,6 +79,15 @@ const Ship = () => {
   const handleBook = (e) => {
     e.preventDefault();
     // Prevent default form submission
+    const isFormComplete = Object.values(weight.origin).every(field => field !== "") &&
+      Object.values(weight.destination).every(field => field !== "") &&
+      weight.weight !== "" && weight.cost !== "";
+
+    if (!isFormComplete) {
+      alert("Please fill in all fields");
+      return;
+    }
+    
     if (isLoggedIn) {
       BookShipment(weight)
         .then((response) => {
