@@ -33,7 +33,7 @@ const Pricing = () => {
                 <h4 className="my-0 fw-normal">Lite</h4>
               </div>
               <div className="card-body">
-                <h4 className="card-title pricing-card-title">Rs. 26/500gms</h4>
+                <h4 className="card-title pricing-card-title">Rs. 60/1kg</h4>
                 <p style={{ fontSize: '16px', fontWeight: 500, color: '#333333' }}>A free and simplified plan best for social, small and medium e-commerce sellers</p>
                 {isLoggedIn?<button type="button" className="w-100 btn btn-lg btn-outline-primary">Select to Shipping</button>:<button type="button" className="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>}
                 <ul style={{ textAlign: 'left', fontWeight: 400 }} className="list-unstyled mt-3 mb-4">
@@ -53,7 +53,7 @@ const Pricing = () => {
                 <h4 className="my-0 fw-normal">Professional</h4>
               </div>
               <div className="card-body">
-                <h4 className="card-title pricing-card-title">Rs. 20/500gms</h4>
+                <h4 className="card-title pricing-card-title">Rs. 45/1kg</h4>
                 <p style={{ fontSize: '16px', fontWeight: 500, color: '#333333' }}>Dynamic plans for sellers who sell on multiple marketplaces and websites</p>
 
                 <button type="button" className="w-100 btn btn-lg btn-primary">Get started</button>

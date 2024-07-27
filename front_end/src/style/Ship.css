@@ -210,6 +210,7 @@
     width: 100%;
     /* height: 100vh; */
     border: 1px solid black;
+    height: min-content;
     margin-top: 10px;
     display: flex;
     flex-direction: column;
@@ -233,7 +234,7 @@
 
 .shipment-form {
     width: 1050px;
-    height: 250px;
+    height: 280px;
     border: 1px solid black;
     margin-top: 20px;
     padding: 15px 20px;

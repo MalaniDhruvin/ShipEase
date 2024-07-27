@@ -7,9 +7,9 @@ import { BookShipment } from '../Global/apiCall';
 import { AuthContext } from '../store/AuthContext';
 
 const Ship = () => {
-  const {isLoggedIn}=useContext(AuthContext);
+  const { isLoggedIn } = useContext(AuthContext);
   const [visible, setVisible] = useState(false);
-  const [weight, setWeight] = useState({ origin: { country: "", city: "", streetAddress: "", postalCode: "", state: "" }, destination: { country: "", city1: "", streetAddress1: "", postalCode1: "", state1: "" }, weight: "" })
+  const [weight, setWeight] = useState({ origin: { country: "", city: "", streetAddress: "", postalCode: "", state: "" }, destination: { country: "", city1: "", streetAddress1: "", postalCode1: "", state1: "" }, weight: "", cost: "" })
   const divRef = useRef(null);
   const handleship = () => {
     setVisible(true)
@@ -44,10 +44,24 @@ const Ship = () => {
       setWeight(prevState => ({
         ...prevState,
         [name]: value
-      }));
+      }
+      ));
     }
+    if (name === 'weight') {
+      weight.cost = value * 60;
+    }
+  
+
+  return newState;
   };
 
+  const handleCost = () => {
+    const cost = weight.weight * 600;
+    setWeight(prevState => ({
+      ...prevState,
+      cost: cost
+    }));
+  }
 
   const handleSelectCountry = (target, country) => {
     // Assuming you want to update the origin country
@@ -64,23 +78,23 @@ const Ship = () => {
 
   const handleBook = (e) => {
     e.preventDefault();
-     // Prevent default form submission
-     if(isLoggedIn){
+    // Prevent default form submission
+    if (isLoggedIn) {
       BookShipment(weight)
         .then((response) => {
-            console.log(response.data);
-            alert("Shipment Booked successfully!");
-            setWeight({ origin: { country: "", city: "", streetAddress: "", postalCode: "", state: "" }, destination: { country: "", city1: "", streetAddress1: "", postalCode1: "", state1: "" }, weight: "" });
+          console.log(response.data);
+          alert("Shipment Booked successfully!");
+          setWeight({ origin: { country: "", city: "", streetAddress: "", postalCode: "", state: "" }, destination: { country: "", city1: "", streetAddress1: "", postalCode1: "", state1: "" }, weight: "", cost: "" });
         })
         .catch((error) => {
-            console.error("Error:", error);
-            alert("Failed to register user. Please try again.");
+          console.error("Error:", error);
+          alert("Failed to register user. Please try again.");
         });
-     }
-     else{
+    }
+    else {
       window.location.href = "/login";
-     }
-    
+    }
+
   }
 
   return (<>
@@ -232,10 +246,10 @@ const Ship = () => {
             </div>
           </div>
           <h1 style={{ fontSize: '1.5vw', marginTop: '19px' }}>Total shipment Weight: {weight.weight != "" ? weight.weight : 0}kg</h1>
+          <h1 style={{ fontSize: '1.5vw', marginTop: '19px' }}>Total shipment Cost: {weight.cost != "" ? weight.cost : 0} Rs</h1>
         </div>
         <button type='submit' onClick={handleBook}>Ship Now</button>
       </div>)}
-
     </div>
     <Footer></Footer>
   </>

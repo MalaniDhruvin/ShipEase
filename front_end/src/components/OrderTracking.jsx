@@ -41,7 +41,7 @@ const OrderTracking = () => {
     <>
       <Navbar />
       <div className="tracking-container">
-        <div className="flex-shrink-0 p-3" style={{ width: '280px', border: '1px solid black' }}>
+        <div className="flex-shrink-0 p-3" style={{ width: '280px',boxShadow:'0px 6px 10px 5px rgba(0, 0, 0, 0.185)' }}>
           <a href="/" className="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
             <svg className="bi pe-none me-2" width="30" height="24">
               <use xlinkHref="#bootstrap"></use>
