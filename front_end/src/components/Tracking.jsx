@@ -74,7 +74,7 @@ const steps = [
 
 
 
-const Tracking = ({ Steps }) => {
+const Tracking = ({ Steps, data }) => {
   const [currentStep, setCurrentStep] = useState(Steps);
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -85,11 +85,10 @@ const Tracking = ({ Steps }) => {
     if (currentStep == 10) {
       clearTimeout(timer)
     }
-    // Cleanup function to clear the timeout
     return () => clearTimeout(timer);
   }, [currentStep]);
   return (
-    <div className='Tracking-containers'>
+    <div style={{zIndex:'10',backgroundColor:'white'}} className='Tracking-containers'>
       <Container>
         <Header>Order Tracking</Header>
         <ProgressContainer>
@@ -105,6 +104,16 @@ const Tracking = ({ Steps }) => {
           ))}
         </ProgressContainer>
       </Container>
+
+      <div className="tracking-data-container">
+        <h4 style={{textAlign:"center",marginBottom:'5px',color:'#0B0757'}}>Details</h4>
+        <p style={{fontSize:'16px',fontWeight:500,color:'#0B0757'}}>Origin:</p>
+        <p style={{ fontWeight: 450,marginTop:'-12px',fontSize:'14px',color:"#565E64" }}>{data.origin.streetAddress}, {data.origin.city}, {data.origin.state}, {data.origin.country}, {data.origin.postalCode}</p>
+        <p style={{fontSize:'16px',fontWeight:500,color:'#0B0757'}}>Destination:</p>
+        <p style={{ fontWeight: 450,marginTop:'-12px',fontSize:'14px',color:"#565E64"  }}>{data.destination.streetAddress}, {data.destination.city}, {data.destination.state}, {data.destination.country}, {data.destination.postalCode}</p>
+        <p style={{fontSize:'16px',fontWeight:500,color:'#0B0757'}}>Weight: <span style={{fontWeight: 450,fontSize:'15.5px',color:"#565E64"  }}>{data.weight}kg</span></p>
+        <p style={{fontSize:'16px',fontWeight:500,color:'#0B0757'}}>Delivery: <span style={{fontWeight: 450,fontSize:'15.5px',color:"#565E64"  }}>{data.delivery_date}</span></p>
+      </div>
     </div>
   )
 }

@@ -12,7 +12,7 @@ const UserDetails = () => {
   // console.log(Details)
   return (
     <>
-      <div className="user-detail">
+      <div style={{zIndex:'10'}} className="user-detail">
         <div className='user-detail-content'>
           <FaUser style={{ color: "slategray", marginTop: '4px' }} />
           {Details ? <p style={{ fontWeight: 400 }}>{Details.fullname}</p> : <p>No user details found</p>}
