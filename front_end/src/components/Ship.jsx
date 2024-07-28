@@ -214,52 +214,52 @@ const Ship = () => {
         <div className="form-button">
           <button role="button" type='submit' class="button-name" onClick={handleship}>Describe your shipment</button>
         </div>
-
       </div>
-      {visible && (<div className="shipment-container" ref={divRef}>
+    </div>
+    
+    {visible && (<div className="shipment-container" ref={divRef}>
         <div className="ship-head">
-          <h1>Shipment</h1>
+          <h1 style={{color:'white'}}>Shipment</h1>
         </div>
         <div className="shipment-form">
           <div className="shipment-content">
-            <div className='form-city' style={{ height: '65px', borderRadius: '5px', marginRight: '20px' }}>
+            <div className='form-city' style={{ height: '65px', borderRadius: '5px', marginRight: '20px',backgroundColor: '#B3BFFF' }}>
               <div>
                 <p>Weight</p>
                 <p>(kg)</p>
               </div>
-              <input type="text" name='weight' onChange={handleweight} required />
+              <input style={{backgroundColor: '#B3BFFF' }} type="text" name='weight' onChange={handleweight} required />
             </div>
             <img src="package_316671.png" width={130} alt="" />
-            <div className='form-city' style={{ height: '65px', borderRadius: '5px', marginLeft: '20px' }}>
+            <div className='form-city' style={{ height: '65px', borderRadius: '5px', marginLeft: '20px',backgroundColor: '#B3BFFF'  }}>
               <div>
                 <p>Length</p>
                 <p>(cm)</p>
               </div>
-              <input type="text" name='lenght' />
+              <input style={{backgroundColor: '#B3BFFF' }} type="text" name='lenght' />
             </div>
             <img src="cross_222301.png" width={15} height={15} style={{ margin: '0px 3px' }} alt="" />
-            <div className='form-city' style={{ height: '65px', borderRadius: '5px' }}>
+            <div className='form-city' style={{ height: '65px', borderRadius: '5px',backgroundColor: '#B3BFFF'  }}>
               <div>
                 <p>Width</p>
                 <p>(cm)</p>
               </div>
-              <input type="text" name='width' />
+              <input style={{backgroundColor: '#B3BFFF' }} type="text" name='width' />
             </div>
             <img src="cross_222301.png" width={15} height={15} style={{ margin: '0px 3px' }} alt="" />
-            <div className='form-city' style={{ height: '65px', borderRadius: '5px' }}>
+            <div className='form-city' style={{ height: '65px', borderRadius: '5px',backgroundColor: '#B3BFFF'  }}>
               <div>
                 <p>Height</p>
                 <p>(cm)</p>
               </div>
-              <input type="text" required name='height' />
+              <input style={{backgroundColor: '#B3BFFF' }} type="text" required name='height' />
             </div>
           </div>
           <h1 style={{ fontSize: '1.5vw', marginTop: '19px' }}>Total shipment Weight: {weight.weight != "" ? weight.weight : 0}kg</h1>
           <h1 style={{ fontSize: '1.5vw', marginTop: '19px' }}>Total shipment Cost: {weight.cost != "" ? weight.cost : 0} Rs</h1>
         </div>
-        <button type='submit' onClick={handleBook}>Ship Now</button>
+        <button style={{backgroundColor:'black',color:'white'}} type='submit' onClick={handleBook}>Ship Now</button>
       </div>)}
-    </div>
     <Footer></Footer>
   </>
   );

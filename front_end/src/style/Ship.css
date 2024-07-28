@@ -151,6 +151,7 @@
     /* height: 20px */
     font-size: 1vw;
     margin-top: -15px;
+    
 }
 
 .form-button {
@@ -209,12 +210,13 @@
 .shipment-container {
     width: 100%;
     /* height: 100vh; */
-    border: 1px solid black;
+    /* border: 1px solid black; */
     height: min-content;
     margin-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #7963E3;
 }
 
 .ship-head {
@@ -235,9 +237,10 @@
 .shipment-form {
     width: 1050px;
     height: 280px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin-top: 20px;
     padding: 15px 20px;
+    background-color: #DCDFFF;
 }
 
 .shipment-content {
@@ -250,6 +253,7 @@
     /* justify-content: space-between; */
     justify-content: space-between;
     align-items: center;
+    
 }
 
 .shipment-container button {
