@@ -35,7 +35,7 @@ const Pricing = () => {
               <div className="card-body">
                 <h4 className="card-title pricing-card-title">Rs. 60/1kg</h4>
                 <p style={{ fontSize: '16px', fontWeight: 500, color: '#333333' }}>A free and simplified plan best for social, small and medium e-commerce sellers</p>
-                {isLoggedIn?<button type="button" className="w-100 btn btn-lg btn-outline-primary">Select to Shipping</button>:<button type="button" className="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>}
+                {isLoggedIn?<Link to='/shipping'><button type="button" className="w-100 btn btn-lg btn-outline-primary">Select to Shipping</button></Link>:<Link to='/register'><button type="button" className="w-100 btn btn-lg btn-outline-primary">Sign up for free</button></Link>}
                 <ul style={{ textAlign: 'left', fontWeight: 400 }} className="list-unstyled mt-3 mb-4">
                   <li><FaCheck style={{ color: '#5EC93C', marginRight: '6px' }} />1 Ecommerce Channel Integration</li>
                   <li><FaCheck style={{ color: '#5EC93C', marginRight: '6px' }} />Chat, Call &amp; Email Support</li>
