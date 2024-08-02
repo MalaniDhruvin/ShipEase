@@ -5,6 +5,7 @@ const apiKeys = {
     register: `${BASE_URI}users/register`,
     shipment: `${BASE_URI}users/getshipments`,
     bookshipment:`${BASE_URI}users/bookshipment`,
+    logout:`${BASE_URI}users/logout`,
 };
 
 export { BASE_URI, apiKeys };

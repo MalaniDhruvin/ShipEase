@@ -2,6 +2,7 @@ import { useState, useContext } from 'react'
 import { loginUser } from '../Global/apiCall'
 import '../style/Login.css'
 import { AuthContext } from '../store/AuthContext';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const { login, setDetail, Details } = useContext(AuthContext);
@@ -47,7 +48,7 @@ const Login = () => {
                         </label>
                     </div>
                     <button className="btn btn-primary w-100 py-2" type="submit">Sign in</button>
-                    {/* <p className="mt-5 mb-3 text-body-secondary">© 2017–2024</p> */}
+                    <p style={{fontSize:'14px',marginTop:'5px'}} className="text-body-secondary">New to ShipEase?<Link to='/register'><span>register</span></Link></p>
                 </form>
             </main>
             <img src="login.png" alt="" />

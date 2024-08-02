@@ -110,7 +110,7 @@ const Register = () => {
                     <div className='reg-btn'>
                         <button className="btn btn-primary w-50 py-2 my-2" onClick={handleInsertUser} type="submit">Sign up</button>
                     </div>
-
+                    <p></p>
                 </form>
             </main>
             <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossOrigin="anonymous"></script>

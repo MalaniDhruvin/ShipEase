@@ -5,14 +5,20 @@ import { PiCityBold } from "react-icons/pi";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaSignOutAlt } from "react-icons/fa";
 import { AuthContext } from '../store/AuthContext'
+import { Logout } from '../Global/apiCall';
 
 
 const UserDetails = () => {
   const { logout, Details } = useContext(AuthContext);
-  // console.log(Details)
+  const LogoutUser=()=>{
+    Logout();
+    logout();
+    window,location.reload()
+  }
+  
   return (
     <>
-      <div style={{zIndex:'10'}} className="user-detail">
+      <div style={{zIndex:'100'}} className="user-detail">
         <div className='user-detail-content'>
           <FaUser style={{ color: "slategray", marginTop: '4px' }} />
           {Details ? <p style={{ fontWeight: 400 }}>{Details.fullname}</p> : <p>No user details found</p>}
@@ -31,7 +37,7 @@ const UserDetails = () => {
         </div>
         <div className="user-detail-content">
           <FaSignOutAlt style={{ color: "slategray", marginTop: '4px' }} />
-          <p style={{ cursor: 'pointer' }} onClick={logout}>sign out</p>
+          <p style={{ cursor: 'pointer' }} onClick={LogoutUser}>sign out</p>
         </div>
 
       </div>

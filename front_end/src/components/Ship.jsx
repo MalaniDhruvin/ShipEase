@@ -19,6 +19,7 @@ const Ship = () => {
       }
     }, 100);
   }
+
   const handleweight = (e) => {
     const { name, value } = e.target;
     if (name in weight.origin) {
@@ -99,9 +100,6 @@ const Ship = () => {
           console.error("Error:", error);
           alert("Failed to register user. Please try again.");
         });
-    }
-    else {
-      window.location.href = "/login";
     }
 
   }

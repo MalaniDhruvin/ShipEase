@@ -14,7 +14,7 @@ router.post("/bookshipment", verifyUser, bookShipment);
 router.get("/getaddress", verifyUser, getAddress);
 router.get("/getshipments", verifyUser, getShipments);
 router.get("/userprofile", verifyUser, userProfile);
-router.get("/logout", userLogout);
+router.get("/logout", verifyUser, userLogout);
 router.post("/refreshtoken", accessRefreshToken);
 
 module.exports = router;

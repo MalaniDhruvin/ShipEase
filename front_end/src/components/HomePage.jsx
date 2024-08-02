@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import '../style/HomePage.css'
 import Marquee from './Marquee';
 import Detail from './Detail';
@@ -8,9 +8,11 @@ import { Link } from 'react-router-dom'
 import OrderTracking from './OrderTracking';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import { AuthContext } from '../store/AuthContext';
 
 const HomePage = () => {
     const currentStep = 2;
+    const { isLoggedIn } = useContext(AuthContext);
     return (<>
         <Navbar></Navbar>
         <div className='Home-container'>
@@ -18,7 +20,8 @@ const HomePage = () => {
                 <h1>Ship your <br /> <span style={{ fontSize: '5.9vw' }}>valuables</span></h1>
                 <h3>Create a delightful online journey by optimising your<br />
                     shipping process and everything surrounding it.</h3>
-                <Link to='/shipping' ><button>Ship Now</button></Link>
+                {isLoggedIn ?<Link to='/shipping' ><button>Ship Now</button></Link>:<Link to='/login' ><button>Ship Now</button></Link>}
+                
             </div>
             <div className="Home-img">
                 <img src="https://d2kh7o38xye1vj.cloudfront.net/wp-content/uploads/2023/07/home-A-trusted-growth-partner-rv.webp" width={600} height={400} alt="" />

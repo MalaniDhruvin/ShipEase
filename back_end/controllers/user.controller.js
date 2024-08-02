@@ -64,6 +64,7 @@ exports.userLogin = asyncHandler(async(req, res) => {
 
 exports.userLogout = asyncHandler(async(req, res) => {
     try {
+        console.log(1);
         await User.findByIdAndUpdate(
             req.user._id,
             {
@@ -75,11 +76,13 @@ exports.userLogout = asyncHandler(async(req, res) => {
                 new: true
             }
         )
+        console.log(2);
 
         const options = {
             httpOnly: true,
             secure: true,
         }
+        console.log(3); 
 
         return res
         .status(200)
