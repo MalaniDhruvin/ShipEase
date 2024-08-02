@@ -12,6 +12,7 @@ const OrderTracking = () => {
   const [shipment, setShipment] = useState([]);
   const [tracking, setTracking] = useState(null);
   const [ship, setShip] = useState(false);
+  const [detail, setdetail] = useState(true);
   const { isLoggedIn } = useContext(AuthContext);
 
   useEffect(() => {
@@ -30,9 +31,6 @@ const OrderTracking = () => {
     fetchData();
   }, [isLoggedIn]);
 
-
-
-
   useEffect(() => {
   }, [shipment]);
 
@@ -42,6 +40,7 @@ const OrderTracking = () => {
 
   const handleTracking = (index) => {
     setTracking(index === tracking ? null : index);
+    setdetail(!detail)
   }
 
   return (
@@ -74,15 +73,14 @@ const OrderTracking = () => {
                 ) : ""}
               </button>
             </li>
-            <li style={{ marginLeft: '12px', marginTop: '-10px' }}>
-              {ship && (
+            <li style={{ marginLeft: '12px', marginTop: '-10px'}}>
+            {ship && (
                 Array.isArray(shipment) && shipment.length > 0 ? (
                   shipment.map((item, index) => (
-                    <div key={index}>
-                      <p style={{ cursor: 'pointer' }} className="mb-1" onClick={() => handleTracking(index)}>
+                    <div  key={index}>
+                      <p style={{ cursor: 'pointer',border:'0px solid black' ,marginTop:'-10px' }} onClick={() => handleTracking(index)}>
                         shipment {index + 1}
                       </p>
-                      {tracking === index && <Tracking Steps={index - 1} data={item} />}
                     </div>
                   ))
                 ) : ""
@@ -90,13 +88,24 @@ const OrderTracking = () => {
             </li>
           </ul>
         </div>
-        {Array.isArray(shipment) && shipment.length == 0 ? <div style={{ border: '0px solid black', marginRight: '290px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+        {Array.isArray(shipment) && shipment.length == 0 ? <div style={{width:'10000%', border: '0px solid black', marginRight: '0px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
           <h1 style={{ color: "#0B0757" }}>There is no Shipping Details</h1>
           <h4 style={{ color: '#636478', fontWeight: '400' }}>Start Shipping Now</h4>
           <Link to='/shipping'><button className='tracking-btn'>Ship now</button></Link>
-        </div> : <div style={{ border: '0px solid black', marginRight: '290px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginLeft: '250px' }}>
-          <h1 style={{ fontSize: '28px', color: '#0B0757' }}>Your order details have been successfully retrieved. Sidebar you will find the latest status and information for your order:</h1>
-        </div>}
+        </div> :detail && <div style={{width:'10000%', border: '0px solid black', marginRight: '290px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginLeft: '250px' }}>
+          <h1 style={{ fontSize: '28px', color: '#0B0757' }}>Your details have been successfully retrieved. Sidebar you will find the latest status and information for your order:</h1>
+        </div>} 
+        <div className='testing'>
+        {ship && (
+                Array.isArray(shipment) && shipment.length > 0 ? (
+                  shipment.map((item, index) => (
+                    <div  key={index}>
+                      {tracking === index && <Tracking Steps={index - 1} data={item} />}
+                    </div>
+                  ))
+                ) : ""
+              )}
+        </div>
       </div>
       <Footer />
     </>

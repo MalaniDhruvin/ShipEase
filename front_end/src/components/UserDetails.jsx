@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { FaUser, FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { PiCityBold } from "react-icons/pi";
@@ -6,16 +6,17 @@ import { FaLocationDot } from "react-icons/fa6";
 import { FaSignOutAlt } from "react-icons/fa";
 import { AuthContext } from '../store/AuthContext'
 import { Logout } from '../Global/apiCall';
+// import { UserProfile } from '../Global/apiCall';
 
 
 const UserDetails = () => {
-  const { logout, Details } = useContext(AuthContext);
-  const LogoutUser=()=>{
+  const { logout,Details } = useContext(AuthContext);
+  const LogoutUser = () => {
     Logout();
     logout();
-    window,location.reload()
+    window.location.reload()
   }
-  
+
   return (
     <>
       <div style={{zIndex:'100'}} className="user-detail">

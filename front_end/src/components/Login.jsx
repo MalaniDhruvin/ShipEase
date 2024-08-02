@@ -5,7 +5,7 @@ import { AuthContext } from '../store/AuthContext';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
-    const { login, setDetail, Details } = useContext(AuthContext);
+    const { login,setDetail,Details } = useContext(AuthContext);
     const [user, setUser] = useState({ email: "", password: "" });
     const getInfo = (i) => {
         const { name, value, type, checked } = i.target;
@@ -48,7 +48,7 @@ const Login = () => {
                         </label>
                     </div>
                     <button className="btn btn-primary w-100 py-2" type="submit">Sign in</button>
-                    <p style={{fontSize:'14px',marginTop:'5px'}} className="text-body-secondary">New to ShipEase?<Link to='/register'><span>register</span></Link></p>
+                    <p style={{ fontSize: '15px', marginTop: '5px', color: '#846EE8', fontWeight: 400 }} >New to ShipEase?<Link to='/register'><span> register</span></Link></p>
                 </form>
             </main>
             <img src="login.png" alt="" />

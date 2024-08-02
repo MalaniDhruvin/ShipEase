@@ -25,9 +25,9 @@ const Pricing = () => {
         </div>
       </header>
 
-      <main className='price-container'>
+      <main style={{height:'78vh',width:'82vw'}} className='price-container'>
         <div className="row row-cols-1 row-cols-md-3 mb-3 text-center">
-          <div className="col price-card">
+          <div  className="col price-card">
             <div className="card mb-4 rounded-3 shadow-sm">
               <div className="card-header py-3">
                 <h4 className="my-0 fw-normal">Lite</h4>
@@ -35,7 +35,7 @@ const Pricing = () => {
               <div className="card-body">
                 <h4 className="card-title pricing-card-title">Rs. 60/1kg</h4>
                 <p style={{ fontSize: '16px', fontWeight: 500, color: '#333333' }}>A free and simplified plan best for social, small and medium e-commerce sellers</p>
-                {isLoggedIn?<Link to='/shipping'><button type="button" className="w-100 btn btn-lg btn-outline-primary">Select to Shipping</button></Link>:<Link to='/register'><button type="button" className="w-100 btn btn-lg btn-outline-primary">Sign up for free</button></Link>}
+                {isLoggedIn?<Link to='/shipping'><button type="button" className="w-100 btn btn-lg btn-outline-primary">Select to Shipping</button></Link>:<Link to='/login'><button type="button" className="w-100 btn btn-lg btn-outline-primary">Login for free</button></Link>}
                 <ul style={{ textAlign: 'left', fontWeight: 400 }} className="list-unstyled mt-3 mb-4">
                   <li><FaCheck style={{ color: '#5EC93C', marginRight: '6px' }} />1 Ecommerce Channel Integration</li>
                   <li><FaCheck style={{ color: '#5EC93C', marginRight: '6px' }} />Chat, Call &amp; Email Support</li>

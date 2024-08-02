@@ -21,7 +21,6 @@ const HomePage = () => {
                 <h3>Create a delightful online journey by optimising your<br />
                     shipping process and everything surrounding it.</h3>
                 {isLoggedIn ?<Link to='/shipping' ><button>Ship Now</button></Link>:<Link to='/login' ><button>Ship Now</button></Link>}
-                
             </div>
             <div className="Home-img">
                 <img src="https://d2kh7o38xye1vj.cloudfront.net/wp-content/uploads/2023/07/home-A-trusted-growth-partner-rv.webp" width={600} height={400} alt="" />

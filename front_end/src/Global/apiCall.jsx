@@ -15,5 +15,6 @@ export const loginUser = (data) => axios.post(apiKeys.login, data, { withCredent
 export const RegisterUser = (data) => axios.post(apiKeys.register, data, { withCredentials: true });
 export const BookShipment = (data) => axios.post(apiKeys.bookshipment, data, { withCredentials: true });
 export const Getshipment = () => axios.get(apiKeys.shipment, { withCredentials: true });
+// export const UserProfile = () => axios.get(apiKeys.userprofile, { withCredentials: true });
 export const Logout = () => axios.get(apiKeys.logout, { withCredentials: true });
 // export const UserProfile = () => axios.get(apiKeys.detail);
