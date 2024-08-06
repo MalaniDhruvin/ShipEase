@@ -12,7 +12,6 @@ const OrderTracking = () => {
   const [shipment, setShipment] = useState([]);
   const [tracking, setTracking] = useState(null);
   const [ship, setShip] = useState(false);
-  const [detail, setdetail] = useState(true);
   const { isLoggedIn } = useContext(AuthContext);
 
   useEffect(() => {
@@ -40,7 +39,6 @@ const OrderTracking = () => {
 
   const handleTracking = (index) => {
     setTracking(index === tracking ? null : index);
-    setdetail(!detail)
   }
 
   return (
@@ -92,7 +90,7 @@ const OrderTracking = () => {
           <h1 style={{ color: "#0B0757" }}>There is no Shipping Details</h1>
           <h4 style={{ color: '#636478', fontWeight: '400' }}>Start Shipping Now</h4>
           <Link to='/shipping'><button className='tracking-btn'>Ship now</button></Link>
-        </div> :detail && <div style={{width:'10000%', border: '0px solid black', marginRight: '290px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginLeft: '250px' }}>
+        </div> :tracking===null && <div style={{width:'10000%', border: '0px solid black', marginRight: '290px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginLeft: '250px' }}>
           <h1 style={{ fontSize: '28px', color: '#0B0757' }}>Your details have been successfully retrieved. Sidebar you will find the latest status and information for your order:</h1>
         </div>} 
         <div className='testing'>
